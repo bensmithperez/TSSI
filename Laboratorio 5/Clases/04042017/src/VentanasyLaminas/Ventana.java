@@ -5,16 +5,12 @@ import javax.swing.JFrame;
 public class Ventana extends JFrame{
 	
 	public Ventana(){
-		setSize(200, 200);
-		setVisible(true);
+		setSize(400, 200);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-	}
-	
-	public Ventana(int ancho, int alto){
-		setSize(ancho, alto);
+		Lamina lam = new Lamina();
+		add(lam);
 		setVisible(true);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
 	}
 }
