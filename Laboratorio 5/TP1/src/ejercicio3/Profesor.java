@@ -34,6 +34,6 @@ public class Profesor extends ejercicio2.Empleado {
 			   " | Nombre: " + getNombre() +
 			   " | Edad: " + getEdad() +
 			   " | Cargo: " + cargo +
-			   " | Antigüedad Docente: " + antiguedadDocente;
+			   " | AntigÃ¼edad Docente: " + antiguedadDocente;
 	}
 }
