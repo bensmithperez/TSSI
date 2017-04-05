@@ -1,4 +1,4 @@
-package VentanasyLaminas;
+package ventanasyLaminas;
 
 import javax.swing.JFrame;
 

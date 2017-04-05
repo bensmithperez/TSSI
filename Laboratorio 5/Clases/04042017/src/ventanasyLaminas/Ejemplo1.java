@@ -1,4 +1,4 @@
-package VentanasyLaminas;
+package ventanasyLaminas;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;

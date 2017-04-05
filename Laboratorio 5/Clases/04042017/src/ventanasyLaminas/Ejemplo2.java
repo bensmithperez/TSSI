@@ -1,4 +1,4 @@
-package VentanasyLaminas;
+package ventanasyLaminas;
 
 public class Ejemplo2 {
 

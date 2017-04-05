@@ -1,4 +1,4 @@
-package VentanasyLaminas;
+package ventanasyLaminas;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -23,7 +23,7 @@ public class Lamina extends JPanel{
 		
 	}
 	
-	class eventoBNegro implements ActionListener{
+	private class eventoBNegro implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			System.out.println("Boton negro presionado!");
 			//setBackground(Color.white);
