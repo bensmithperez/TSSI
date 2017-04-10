@@ -3,6 +3,8 @@ package ejercicio1;
 public class Principal {
 
 	public static void main(String[] args) {
+		
+		//PARTE 1
 		Auto a1 = new Auto();		
 		//¿cuantos cilindros?
 		System.out.println("Cant cilindros: "+a1.m.getCantCilindros());
