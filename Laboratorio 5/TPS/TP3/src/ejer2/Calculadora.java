@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
@@ -11,7 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Calculadora {
+public class Calculadora implements ActionListener{
 
 	private JFrame frame;
 	private JTextField textField;
@@ -82,7 +85,7 @@ public class Calculadora {
 		JButton btnRestar = new JButton("-");
 		JButton btnDividir = new JButton("/");
 		JButton btnMultiplicar = new JButton("*");
-
+	
 		//los agrego en el orden que los quiero...
 		panelBotones.add(btnNum1);
 		panelBotones.add(btnNum2);
@@ -101,7 +104,27 @@ public class Calculadora {
 		panelBotones.add(btnIgual);
 		panelBotones.add(btnDividir);
 		
-		for 	
+		//agrego listeners...
+		btnNum1.addActionListener(this);
+		btnNum2.addActionListener(this);
+		btnNum3.addActionListener(this);
+		btnNum4.addActionListener(this);
+		btnNum5.addActionListener(this);
+		btnNum6.addActionListener(this);
+		btnNum7.addActionListener(this);
+		btnNum8.addActionListener(this);
+		btnNum9.addActionListener(this);
+		btnNum0.addActionListener(this);
+		btnCE.addActionListener(this);
+		btnIgual.addActionListener(this);
+		btnSumar.addActionListener(this);
+		btnRestar.addActionListener(this);
+		btnDividir.addActionListener(this);
+		btnMultiplicar.addActionListener(this);
 	}
 
+	public void actionPerformed(ActionEvent evento){
+		JButton boton = (JButton)evento.getSource();
+		System.out.println(boton.getText());
+	}
 }
