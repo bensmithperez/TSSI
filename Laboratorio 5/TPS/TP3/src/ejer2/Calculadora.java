@@ -16,9 +16,10 @@ import javax.swing.SwingConstants;
 
 public class Calculadora implements ActionListener{
 
-	private int num1;
-	private int num2;
-	private boolean existeUnNumero = false;
+	private String num1;
+	private String num2;
+	private boolean existeUnNumero;
+	private String operador;
 	private JFrame frame;
 	private JTextField textField;
 
@@ -49,6 +50,10 @@ public class Calculadora implements ActionListener{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		num1 = "";
+		num2 = "";
+		existeUnNumero = false;
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -126,15 +131,57 @@ public class Calculadora implements ActionListener{
 		btnMultiplicar.addActionListener(this);
 	}
 
+	public void vaciarVariables(){
+		existeUnNumero = false;
+		num1 = "";
+		num2 = "";
+		operador = "";
+	}
+	
 	public void actionPerformed(ActionEvent evento){
 		JButton boton = (JButton)evento.getSource();
 		
-		String operadores = "CE+.*-+";
+		String operadores = "CE*-+=";
 		String texto = boton.getText();
 		
 		if (operadores.contains(texto)){
-			
+			if (texto == "CE"){
+				vaciarVariables();
+			} else if (texto == "=") {
+				if (operador!=""&&operador!=null){
+					System.out.println(operar(num1,num2,operador));
+					vaciarVariables();
+				}
+			} else {
+				if (existeUnNumero){
+					operador="";
+					operador=texto;
+				}
+			}
+		} else {
+			if (operador==""||operador==null){
+				num1+=texto;
+				existeUnNumero = true;
+			} else {
+				num2+=texto;
+			}
 		}
-		System.out.println(boton.getText());
+		System.out.println("boton: " + boton.getText());
+		System.out.println("num1: " + num1);
+		System.out.println("num2: " + num2);
+		System.out.println("operador: " + operador);
+	}
+	
+	private float operar(String num1, String num2, String operador){
+		
+		switch(operador){
+		case "+":
+			return Float.parseFloat(num1) + Float.parseFloat(num2);
+		case "-":
+			return Float.parseFloat(num1) - Float.parseFloat(num2);
+		case "*":
+			return Float.parseFloat(num1) * Float.parseFloat(num2);
+		}
+		return 0;
 	}
 }
