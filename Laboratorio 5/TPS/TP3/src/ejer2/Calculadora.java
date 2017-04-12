@@ -16,6 +16,9 @@ import javax.swing.SwingConstants;
 
 public class Calculadora implements ActionListener{
 
+	private int num1;
+	private int num2;
+	private boolean existeUnNumero = false;
 	private JFrame frame;
 	private JTextField textField;
 
@@ -83,7 +86,7 @@ public class Calculadora implements ActionListener{
 		JButton btnIgual = new JButton("=");
 		JButton btnSumar = new JButton("+");
 		JButton btnRestar = new JButton("-");
-		JButton btnDividir = new JButton("/");
+		JButton btnPunto = new JButton(".");
 		JButton btnMultiplicar = new JButton("*");
 	
 		//los agrego en el orden que los quiero...
@@ -102,7 +105,7 @@ public class Calculadora implements ActionListener{
 		panelBotones.add(btnNum0);
 		panelBotones.add(btnCE);
 		panelBotones.add(btnIgual);
-		panelBotones.add(btnDividir);
+		panelBotones.add(btnPunto);
 		
 		//agrego listeners...
 		btnNum1.addActionListener(this);
@@ -119,12 +122,19 @@ public class Calculadora implements ActionListener{
 		btnIgual.addActionListener(this);
 		btnSumar.addActionListener(this);
 		btnRestar.addActionListener(this);
-		btnDividir.addActionListener(this);
+		btnPunto.addActionListener(this);
 		btnMultiplicar.addActionListener(this);
 	}
 
 	public void actionPerformed(ActionEvent evento){
 		JButton boton = (JButton)evento.getSource();
+		
+		String operadores = "CE+.*-+";
+		String texto = boton.getText();
+		
+		if (operadores.contains(texto)){
+			
+		}
 		System.out.println(boton.getText());
 	}
 }
