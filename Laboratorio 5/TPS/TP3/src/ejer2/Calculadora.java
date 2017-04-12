@@ -66,7 +66,6 @@ public class Calculadora implements ActionListener{
 		textField = new JTextField();
 		//el ejercicio lo pide...
 		textField.setEditable(false);
-		textField.setEnabled(false);
 		//---
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		panelInput.add(textField);
@@ -147,9 +146,11 @@ public class Calculadora implements ActionListener{
 		if (operadores.contains(texto)){
 			if (texto == "CE"){
 				vaciarVariables();
+				textField.setText("");
 			} else if (texto == "=") {
 				if (operador!=""&&operador!=null){
-					System.out.println(operar(num1,num2,operador));
+					//System.out.println(operar(num1,num2,operador));
+					textField.setText(String.valueOf(operar(num1,num2,operador)));
 					vaciarVariables();
 				}
 			} else {
@@ -162,14 +163,16 @@ public class Calculadora implements ActionListener{
 			if (operador==""||operador==null){
 				num1+=texto;
 				existeUnNumero = true;
+				textField.setText(num1);
 			} else {
 				num2+=texto;
+				textField.setText(num2);
 			}
 		}
-		System.out.println("boton: " + boton.getText());
-		System.out.println("num1: " + num1);
-		System.out.println("num2: " + num2);
-		System.out.println("operador: " + operador);
+		//System.out.println("boton: " + boton.getText());
+		//System.out.println("num1: " + num1);
+		//System.out.println("num2: " + num2);
+		//System.out.println("operador: " + operador);
 	}
 	
 	private float operar(String num1, String num2, String operador){
