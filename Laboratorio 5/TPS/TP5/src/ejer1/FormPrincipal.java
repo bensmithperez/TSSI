@@ -1,44 +1,31 @@
 package ejer1;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.SwingUtilities;
 
-public class FormPrincipal extends JFrame {
-
-	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
+public class FormPrincipal {	
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FormPrincipal frame = new FormPrincipal();
-					frame.setVisible(true);
-					MenuPrincipal mp = new MenuPrincipal();
-					frame.add(mp);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		
+		SwingUtilities.invokeLater(new Runnable(){
+			public void run(){
+				Marco framePrincipal = new Marco();
+				MenuPrincipal mp = new MenuPrincipal();
+				framePrincipal.add(mp);
+				framePrincipal.mostrar();
 			}
 		});
 	}
+}
 
-	/**
-	 * Create the frame.
-	 */
-	public FormPrincipal() {
+class Marco extends JFrame{
+	public Marco(){
+		setVisible(false);
+		setBounds(100,100,450,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+		setTitle("TP5");
 	}
-
+	
+	public void mostrar(){
+		setVisible(true);
+	}
 }
