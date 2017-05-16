@@ -5,6 +5,11 @@ public class Persona {
 	private String apellido;
 	private String dni;
 	
+	public Persona(String nombre, String apellido, String dni){
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+	}
 	public String getNombre() {
 		return nombre;
 	}
@@ -23,5 +28,4 @@ public class Persona {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
-	
 }

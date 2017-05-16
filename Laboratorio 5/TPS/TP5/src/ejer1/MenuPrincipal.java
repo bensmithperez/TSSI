@@ -60,6 +60,11 @@ public class MenuPrincipal extends JPanel{
 		public void actionPerformed(ActionEvent e){
 			if(e.getSource() == miAgregar){
 				System.out.println("agregar");
+				p.removeAll();
+				FormAgregar pa = new FormAgregar(elementosLista);
+				p.add(pa);
+				p.repaint();
+				p.revalidate();
 			}
 			if(e.getSource() == miModificar){
 				System.out.println("modificar");
