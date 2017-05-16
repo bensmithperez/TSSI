@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -39,7 +40,7 @@ public class Inicio extends JPanel{
 		btnAceptar.addActionListener( new ActionListener() {
 			
 		public void actionPerformed(ActionEvent e) {
-			 System.out.println(txtUsuario.getText() + " " + cbPermisos.getSelectedItem());
+			JOptionPane.showMessageDialog(null, txtUsuario.getText() + " " + cbPermisos.getSelectedItem(), "aceptar", JOptionPane.PLAIN_MESSAGE);
 			}
 		});
 		this.add(btnAceptar);
