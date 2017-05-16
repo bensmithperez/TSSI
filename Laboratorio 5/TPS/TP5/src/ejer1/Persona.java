@@ -28,4 +28,7 @@ public class Persona {
 	public void setDni(String dni) {
 		this.dni = dni;
 	}
+	public String toString() {
+        return nombre+" "+apellido+" "+dni;
+    }
 }
