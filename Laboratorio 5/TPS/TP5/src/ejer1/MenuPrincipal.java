@@ -68,6 +68,11 @@ public class MenuPrincipal extends JPanel{
 			}
 			if(e.getSource() == miModificar){
 				System.out.println("modificar");
+				p.removeAll();
+				FormModificar fa = new FormModificar(lista,elementosLista);
+				p.add(fa);
+				p.repaint();
+				p.revalidate();
 			}
 			if(e.getSource() == miEliminar){
 				System.out.println("eliminar");
