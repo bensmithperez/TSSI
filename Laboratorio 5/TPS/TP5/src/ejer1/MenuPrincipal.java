@@ -24,7 +24,7 @@ public class MenuPrincipal extends JPanel{
 		this.setLayout(new BorderLayout());
 		crearMenu();
 		elementosLista = new DefaultListModel<Persona>();
-		lista = new JList<Persona>();
+		lista = new JList<Persona>(elementosLista);
 	}
 	
 	public void crearMenu(){
@@ -61,8 +61,8 @@ public class MenuPrincipal extends JPanel{
 			if(e.getSource() == miAgregar){
 				System.out.println("agregar");
 				p.removeAll();
-				FormAgregar pa = new FormAgregar(elementosLista);
-				p.add(pa);
+				FormAgregar fa = new FormAgregar(elementosLista);
+				p.add(fa);
 				p.repaint();
 				p.revalidate();
 			}
@@ -71,9 +71,19 @@ public class MenuPrincipal extends JPanel{
 			}
 			if(e.getSource() == miEliminar){
 				System.out.println("eliminar");
+				p.removeAll();
+				FormEliminar fe = new FormEliminar(lista,elementosLista);
+				p.add(fe);
+				p.repaint();
+				p.revalidate();
 			}
 			if(e.getSource() == miListar){
 				System.out.println("listar");
+				p.removeAll();
+				FormListar fl = new FormListar(lista);
+				p.add(fl);
+				p.repaint();
+				p.revalidate();
 			}
 		}
 	}

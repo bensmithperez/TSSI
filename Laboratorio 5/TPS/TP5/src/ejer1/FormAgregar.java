@@ -53,6 +53,7 @@ public class FormAgregar extends JPanel{
 			public void actionPerformed(ActionEvent e) {
 			 Persona p = new Persona(txtNombre.getText() , txtApellido.getText() , txtDNI.getText());
 			 elementosLista.addElement(p);
+			 System.out.println(elementosLista);
 			 txtNombre.setText("");
 			 txtApellido.setText("");
 			 txtDNI.setText("");
