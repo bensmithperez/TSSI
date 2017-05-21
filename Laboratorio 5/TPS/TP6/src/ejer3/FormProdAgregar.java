@@ -55,6 +55,8 @@ public class FormProdAgregar extends JPanel{
 			 elementosListaProd.addElement(p);
 			 //System.out.println(elementosListaCat);
 			 txtNombre.setText("");
+			 cbCategorias.setSelectedIndex(0);
+			 txtCant.setText("");
 			}
 		});
 		this.add(btnAceptar);

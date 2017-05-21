@@ -80,11 +80,11 @@ public class MenuPrincipal extends JPanel{
 			}
 			if(e.getSource() == miProdListar){
 				System.out.println("producto listar");
-				/*p.removeAll();
+				p.removeAll();
 				FormProdListar fpl = new FormProdListar(listaProd);
 				p.add(fpl);
 				p.repaint();
-				p.revalidate();*/
+				p.revalidate();
 			}
 		}
 	}
