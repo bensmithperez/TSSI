@@ -22,7 +22,7 @@ class Marco extends JFrame{
 		setVisible(false);
 		setBounds(100,100,450,300);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setTitle("TP5");
+		setTitle("TP6");
 	}
 	
 	public void mostrar(){

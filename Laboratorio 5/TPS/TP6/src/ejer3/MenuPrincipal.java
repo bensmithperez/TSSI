@@ -11,9 +11,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-import ejer1.FormAgregar;
-import ejer1.MenuPrincipal.procesarEvento;
-
 public class MenuPrincipal extends JPanel{
 	JPanel p;
 	
@@ -58,17 +55,20 @@ public class MenuPrincipal extends JPanel{
 		menuBar.add(itemCategorias);
 		menuBar.add(itemProductos);
 		this.add(menuBar, BorderLayout.NORTH);
+		
+		p = new JPanel();
+		this.add(p, BorderLayout.CENTER);
 	}
 	
 	class procesarEvento implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			if(e.getSource() == miCatAgregar){
 				System.out.println("categoria agregar");
-				/*p.removeAll();
+				p.removeAll();
 				FormCatAgregar fca = new FormCatAgregar(elementosListaCat);
 				p.add(fca);
 				p.repaint();
-				p.revalidate();*/
+				p.revalidate();
 			}
 			if(e.getSource() == miProdAgregar){
 				System.out.println("producto agregar");
