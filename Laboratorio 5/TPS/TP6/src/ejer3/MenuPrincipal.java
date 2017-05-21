@@ -11,84 +11,80 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
+import ejer1.FormAgregar;
+import ejer1.MenuPrincipal.procesarEvento;
+
 public class MenuPrincipal extends JPanel{
 	JPanel p;
-	JMenuItem miAgregar;
-	JMenuItem miModificar;
-	JMenuItem miEliminar;
-	JMenuItem miListar;
-	JList<Persona> lista;
-	DefaultListModel<Persona> elementosLista;
+	
+	JMenuItem miCatAgregar;
+	JMenuItem miProdAgregar;
+	JMenuItem miProdListar;
+	
+	JList<Categoria> listaCat;
+	JList<Producto> listaProd;
+	DefaultListModel<Categoria> elementosListaCat;
+	DefaultListModel<Producto> elementosListaProd;
 	
 	public MenuPrincipal(){
 		this.setLayout(new BorderLayout());
 		crearMenu();
-		elementosLista = new DefaultListModel<Persona>();
-		lista = new JList<Persona>(elementosLista);
+		elementosListaCat = new DefaultListModel<Categoria>();
+		elementosListaProd = new DefaultListModel<Producto>();
+		listaCat = new JList<Categoria>(elementosListaCat);
+		listaProd = new JList<Producto>(elementosListaProd);
 	}
 	
 	public void crearMenu(){
 		JMenuBar menuBar = new JMenuBar();
-		JMenu itemPersona = new JMenu("Persona");
+		JMenu itemCategorias = new JMenu("Categorías");
+		JMenu itemProductos = new JMenu("Productos");
 		
-		//creo items menu...
-		miAgregar = new JMenuItem("Agregar");
-		miModificar = new JMenuItem("Modificar");
-		miEliminar = new JMenuItem("Eliminar");
-		miListar = new JMenuItem("Listar");
+		//creo items menu...(categorias y prods)
+		miCatAgregar = new JMenuItem("Agregar");
+		miProdAgregar = new JMenuItem("Agregar");
+		miProdListar = new JMenuItem("Listar");
 		
-		//agrego acciones...
-		miAgregar.addActionListener(new procesarEvento());
-		miModificar.addActionListener(new procesarEvento());
-		miEliminar.addActionListener(new procesarEvento());
-		miListar.addActionListener(new procesarEvento());
+		//agrego acciones...	
+		miCatAgregar.addActionListener(new procesarEvento());
+		miProdAgregar.addActionListener(new procesarEvento());
+		miProdListar.addActionListener(new procesarEvento());
 		
 		//agrego los items al menu...
-		itemPersona.add(miAgregar);
-		itemPersona.add(miModificar);
-		itemPersona.add(miEliminar);
-		itemPersona.add(miListar);
+		itemCategorias.add(miCatAgregar);
+		itemProductos.add(miProdAgregar);
+		itemProductos.add(miProdListar);
 		
-		menuBar.add(itemPersona);
+		menuBar.add(itemCategorias);
+		menuBar.add(itemProductos);
 		this.add(menuBar, BorderLayout.NORTH);
-		
-		p = new JPanel();
-		this.add(p, BorderLayout.CENTER);
 	}
 	
 	class procesarEvento implements ActionListener{
 		public void actionPerformed(ActionEvent e){
-			if(e.getSource() == miAgregar){
-				System.out.println("agregar");
-				p.removeAll();
-				FormAgregar fa = new FormAgregar(elementosLista);
-				p.add(fa);
+			if(e.getSource() == miCatAgregar){
+				System.out.println("categoria agregar");
+				/*p.removeAll();
+				FormCatAgregar fca = new FormCatAgregar(elementosListaCat);
+				p.add(fca);
 				p.repaint();
-				p.revalidate();
+				p.revalidate();*/
 			}
-			if(e.getSource() == miModificar){
-				System.out.println("modificar");
-				p.removeAll();
-				FormModificar fa = new FormModificar(lista,elementosLista);
-				p.add(fa);
+			if(e.getSource() == miProdAgregar){
+				System.out.println("producto agregar");
+				/*p.removeAll();
+				FormProdAgregar fpa = new FormProdAgregar(elementosListaProd);
+				p.add(fpa);
 				p.repaint();
-				p.revalidate();
+				p.revalidate();*/
 			}
-			if(e.getSource() == miEliminar){
-				System.out.println("eliminar");
-				p.removeAll();
-				FormEliminar fe = new FormEliminar(lista,elementosLista);
-				p.add(fe);
+			if(e.getSource() == miProdListar){
+				System.out.println("producto listar");
+				/*p.removeAll();
+				FormProdListar fpl = new FormProdListar(listaProd);
+				p.add(fpl);
 				p.repaint();
-				p.revalidate();
-			}
-			if(e.getSource() == miListar){
-				System.out.println("listar");
-				p.removeAll();
-				FormListar fl = new FormListar(lista);
-				p.add(fl);
-				p.repaint();
-				p.revalidate();
+				p.revalidate();*/
 			}
 		}
 	}
