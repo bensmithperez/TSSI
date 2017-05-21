@@ -72,11 +72,11 @@ public class MenuPrincipal extends JPanel{
 			}
 			if(e.getSource() == miProdAgregar){
 				System.out.println("producto agregar");
-				/*p.removeAll();
-				FormProdAgregar fpa = new FormProdAgregar(elementosListaProd);
+				p.removeAll();
+				FormProdAgregar fpa = new FormProdAgregar(elementosListaProd,elementosListaCat);
 				p.add(fpa);
 				p.repaint();
-				p.revalidate();*/
+				p.revalidate();
 			}
 			if(e.getSource() == miProdListar){
 				System.out.println("producto listar");
