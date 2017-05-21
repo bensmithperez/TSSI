@@ -16,14 +16,7 @@ public class Inicio extends JPanel{
 	JComboBox<String> cbPermisos;
 	
 	public Inicio(){
-		GridLayout gl = new GridLayout();
-		gl.setHgap(1);
-		gl.setVgap(10);
-	    gl.setColumns(2);
-	    gl.setRows(6);
-		    
-		this.setLayout(gl);
-	    this.setVisible(true);
+
 	    
 	    JLabel lblUsuario = new JLabel("Usuario:");
 		this.add(lblUsuario);
