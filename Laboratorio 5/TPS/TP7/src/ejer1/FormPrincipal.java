@@ -10,12 +10,8 @@ public class FormPrincipal {
 			public void run(){
 				Marco framePrincipal = new Marco();
 				Inicio inicio = new Inicio();
-				FormResultado fr = new FormResultado();
-				framePrincipal.add(fr);
 				framePrincipal.add(inicio);
 				framePrincipal.mostrar();
-				
-				
 			}
 		});
 	}
