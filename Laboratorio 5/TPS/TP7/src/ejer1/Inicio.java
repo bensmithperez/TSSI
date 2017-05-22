@@ -12,6 +12,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Inicio extends JPanel{
+	Marco framePrincipal = new Marco();
 	JTextField txtTitulo;
 	JTextField txtEncabezado;
 	JTextArea txtParrafo;
@@ -56,15 +57,12 @@ public class Inicio extends JPanel{
 		btnAceptar.addActionListener( new ActionListener() {
 			
 		public void actionPerformed(ActionEvent e) {
-            fr = new FormResultado();
-            cambiar(fr);
-            fr.mostrar();
+			framePrincipal = new Marco();
+			fr = new FormResultado(txtTitulo.getText(), txtEncabezado.getText(), txtParrafo.getText(), txtImagen.getText());
+			framePrincipal.add(fr);
+			framePrincipal.setVisible(true);
 			}
 		});
 		this.add(btnAceptar);
-	}
-	public void cambiar(FormResultado fr){
-		this.setVisible(false);
-		this.add(fr);
 	}
 }
