@@ -12,7 +12,7 @@ public class FormResultado extends JPanel{
 		GridLayout gl = new GridLayout();
 		gl.setHgap(1);
 		gl.setVgap(10);
-	    gl.setColumns(4);
+	    gl.setColumns(1);
 	    gl.setRows(0);
 		    
 		this.setLayout(gl);
@@ -27,9 +27,9 @@ public class FormResultado extends JPanel{
 	public FormResultado(String titulo, String encabezado,String parrafo,String imagen){	
 		GridLayout gl = new GridLayout();
 		gl.setHgap(1);
-		gl.setVgap(10);
-	    gl.setColumns(4);
-	    gl.setRows(6);
+		gl.setVgap(1);
+	    gl.setColumns(1);
+	    gl.setRows(2);
 		    
 		this.setLayout(gl);
 	    this.setVisible(true);
