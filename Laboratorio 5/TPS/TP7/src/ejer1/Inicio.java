@@ -16,6 +16,7 @@ public class Inicio extends JPanel{
 	JTextField txtEncabezado;
 	JTextArea txtParrafo;
 	JTextField txtImagen;
+	FormResultado fr;
 	
 	public Inicio(){
 		GridLayout gl = new GridLayout();
@@ -55,9 +56,15 @@ public class Inicio extends JPanel{
 		btnAceptar.addActionListener( new ActionListener() {
 			
 		public void actionPerformed(ActionEvent e) {
-			JOptionPane.showMessageDialog(null, "ok", "aceptar", JOptionPane.PLAIN_MESSAGE);
+            fr = new FormResultado();
+            cambiar(fr);
+            fr.mostrar();
 			}
 		});
 		this.add(btnAceptar);
+	}
+	public void cambiar(FormResultado fr){
+		this.setVisible(false);
+		this.add(fr);
 	}
 }
