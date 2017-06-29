@@ -1,5 +1,5 @@
 package modelo.sgb.benjismithperez.com;
 
-public class Servicio {
+public class ModeloCuenta {
 
 }

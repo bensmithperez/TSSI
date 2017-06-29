@@ -5,8 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SGB</title>
+<script>
+
+function isNullOrWhitespace(input){
+	if(typeof input === 'undefined' || input == null) return true;
+	
+	return input.replace(/\s/g,'').length < 1;
+}
+
+function validarLogin(){
+	var usuario = document.forms["loginForm"]["usuario"].value;
+	var pass = document.forms["loginForm"]["pass"].value;
+	if (isNullOrWhitespace(usuario) || isNullOrWhitespace(pass)){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}
+</script>
 </head>
 <body>
 <h1>Login</h1>
+<form name="loginForm" action="Login" method="post" onsubmit="return validarLogin()">
+	<input type="text" name="usuario" placeholder="usuario">
+	<input type="password" name="pass" placeholder="contraseña">
+	<input type="submit" name="ingresar" value="Ingresar">
+</form>
+<p id="error"></p>
 </body>
 </html>

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Conexion {
+public class ModeloConexion {
 	private static String url = "jdbc:mysql://localhost:3306/sgb";    
     private static String nombreDriver = "com.mysql.jdbc.Driver";   
     private static String usuario = "root";   
@@ -16,10 +16,12 @@ public class Conexion {
             Class.forName(nombreDriver);
             try {
                 con = DriverManager.getConnection(url, usuario, pass);
-            } catch (SQLException ex) {
+            } catch (SQLException e) {
+            	e.getStackTrace();
                 System.out.println("Error al conectar a la BD."); 
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException e) {
+        	e.getStackTrace();
             System.out.println("No encontré el driver...."); 
         }
         return con;
