@@ -2,6 +2,7 @@ package controlador.sgb.benjismithperez.com;
 
 import modelo.sgb.benjismithperez.com.ModeloUsuario;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controlador.sgb.benjismithperez.com.ControladorConexion;
@@ -25,6 +26,23 @@ public class ControladorUsuario {
 			System.err.println("no anda esto");
 			e.printStackTrace();
 			return false;
+		}
+	}
+	
+	public int Buscar(){
+		try {
+			ResultSet r = c.EjecutarQuery("select tipo from usuarios where usuario = '"+u.getUsuario()+"' and pass = '"+u.getPass()+"';");
+			if (!r.next() ) {
+			    return -1;
+			} 
+			System.err.println("anda esto");
+			r.first();
+			return r.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda esto");
+			e.printStackTrace();
+			return -1;
 		}
 	}
 }

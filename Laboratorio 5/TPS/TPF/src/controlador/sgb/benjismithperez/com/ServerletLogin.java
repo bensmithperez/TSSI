@@ -15,14 +15,14 @@ import modelo.sgb.benjismithperez.com.ModeloUsuario;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/ServerletLogin")
+public class ServerletLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public ServerletLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -49,13 +49,25 @@ public class Login extends HttpServlet {
 			
 			ControladorUsuario c = new ControladorUsuario(u);
 			try{
-				c.Agregar();
+				int res = c.Buscar();
+				if (res == -1 || res > 1){
+					request.setAttribute("error", true);
+					RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+					rd.forward(request, response);		
+				} else if (res == 0){
+					request.setAttribute("usuario", u.getUsuario());
+					RequestDispatcher rd = request.getRequestDispatcher("admin/home.jsp");
+					rd.forward(request, response);
+				} else if (res == 1){
+					request.setAttribute("usuario", u.getUsuario());
+					RequestDispatcher rd = request.getRequestDispatcher("usuario/home.jsp");
+					rd.forward(request, response);
+				}	
 			}
 			catch(Exception e){
 				e.printStackTrace();
 			}
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-			rd.forward(request, response);
+			
 		} catch (NoSuchAlgorithmException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

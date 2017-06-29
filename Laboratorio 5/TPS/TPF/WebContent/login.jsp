@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SGB</title>
 <script>
-
 function isNullOrWhitespace(input){
 	if(typeof input === 'undefined' || input == null) return true;
 	
@@ -25,11 +24,22 @@ function validarLogin(){
 </head>
 <body>
 <h1>Login</h1>
-<form name="loginForm" action="Login" method="post" onsubmit="return validarLogin()">
+<form name="loginForm" action="ServerletLogin" method="post" onsubmit="return validarLogin()">
 	<input type="text" name="usuario" placeholder="usuario">
 	<input type="password" name="pass" placeholder="contraseña">
 	<input type="submit" name="ingresar" value="Ingresar">
 </form>
-<p id="error"></p>
+<p id="error">
+<%
+try{
+	if (request.getAttribute("error") != null){
+		out.println("Usuario o contrase~na incorrecto.");
+	}
+}
+catch(Exception e){
+	out.println("error");
+}
+%>
+</p>
 </body>
 </html>

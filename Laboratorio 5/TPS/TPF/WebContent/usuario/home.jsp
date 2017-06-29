@@ -7,13 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Admin</h1>
+<h1>Usuario</h1>
 <%
 try{
 	if ((request.getAttribute("usuario") != null)){
 		out.println("hola " + request.getAttribute("usuario"));
-	} else {
-		out.println("nada aqu'i");
 	}
 }
 catch(Exception e){

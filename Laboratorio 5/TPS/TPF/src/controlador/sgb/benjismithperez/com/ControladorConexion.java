@@ -17,16 +17,15 @@ public class ControladorConexion {
 		this.rs = null;
 	}
 	
-	public void EjecutarQuery(String sql) throws SQLException{
+	public ResultSet EjecutarQuery(String sql) throws SQLException{
 		con = ModeloConexion.getConnection();
 		stmt = con.createStatement();
-		rs = stmt.executeQuery(sql);
-		System.out.println(rs);
+		return stmt.executeQuery(sql);
 	}
 
-	public void EjecutarUpdate(String sql) throws SQLException{
+	public int EjecutarUpdate(String sql) throws SQLException{
 		con = ModeloConexion.getConnection();
 		stmt = con.createStatement();
-		stmt.executeUpdate(sql);
+		return stmt.executeUpdate(sql);
 	}
 }
