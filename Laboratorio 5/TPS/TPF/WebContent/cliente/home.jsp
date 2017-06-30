@@ -19,10 +19,20 @@ try{
 	    		response.sendRedirect("login.jsp");
 	    	}
 		} else {
-			out.println("nada aquí");
+			session.invalidate();
+    		response.sendRedirect("login.jsp");
 		}
     }
 }
+catch(Exception e){
+	out.println("error");
+}
 %>
 </body>
+<ul>
+	<li>Home</li>
+	<li>Movimientos</li>
+	<li>Home</li>
+	<li>Home</li>
+</ul>
 </html>

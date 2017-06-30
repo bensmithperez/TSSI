@@ -19,7 +19,8 @@ try{
 	    		response.sendRedirect("login.jsp");
 	    	}
 		} else {
-			out.println("nada aquí");
+			session.invalidate();
+    		response.sendRedirect("login.jsp");
 		}
     }
 }
@@ -27,5 +28,31 @@ catch(Exception e){
 	out.println("error");
 }
 %>
+
+<ul>
+	<li>Home</li>
+	<li>Clientes
+	<ul>
+		<li>Crear</li>
+		<li>Modificar</li>
+		<li>Borrar</li>
+	</ul>
+	</li>
+	<li>Cuentas
+	<ul>
+		<li>Crear</li>
+		<li>Modificar</li>
+		<li>Borrar</li>
+	</ul>
+	</li>
+	<li>Asignar Cuentas</li>
+	<li>Servicios
+	<ul>
+		<li>Crear</li>
+		<li>Modificar</li>
+		<li>Borrar</li>
+	</ul>
+	</li>
+</ul>
 </body>
 </html>
