@@ -41,5 +41,22 @@ catch(Exception e){
 }
 %>
 </p>
+
+<form name="agregarUsuarioForm" action="ServerletAgregarUsuario" method="post" onsubmit="">
+	<fieldset>
+	    <legend>Datos Personales:</legend>
+		<input type="text" name="nombre" placeholder="Nombre"><br>
+		<input type="text" name="apellido" placeholder="Apellido"><br>
+		<input type="text" name="dni" placeholder="12345678"><br>
+		<input type="date" name="fechaNac" placeholder="ddmmaaaa"><br>
+	</fieldset>
+	<fieldset>
+	    <legend>Datos Usuario:</legend>
+		<input type="text" name="usuario" placeholder="nuevo usuario"><br>
+		<input type="password" name="pass" placeholder="nueva contraseña"><br>
+	</fieldset>
+	<input type="submit" name="ingresar" value="Crear">
+</form>
+
 </body>
 </html>

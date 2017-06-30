@@ -4,6 +4,7 @@ import modelo.sgb.benjismithperez.com.ModeloUsuario;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 
 import controlador.sgb.benjismithperez.com.ControladorConexion;
 
@@ -18,7 +19,7 @@ public class ControladorUsuario {
 	
 	public boolean Agregar(){
 		try {
-			c.EjecutarUpdate("insert into usuarios(id,tipo,usuario,pass) values('0',"+u.getTipo()+",'"+u.getUsuario()+"','"+u.getPass()+"');");
+			c.EjecutarUpdate("insert into usuarios(tipo,usuario,pass) values("+u.getTipo()+",'"+u.getUsuario()+"','"+u.getPass()+"','"+u.getNombre()+"','"+u.getApellido()+"','"+u.getDni()+"','"+u.getFechaNac()+"');");
 			System.err.println("anda esto");
 			return true;
 		} catch (SQLException e) {
@@ -31,7 +32,7 @@ public class ControladorUsuario {
 	
 	public int Buscar(){
 		try {
-			ResultSet r = c.EjecutarQuery("select tipo from usuarios where usuario = '"+u.getUsuario()+"' and pass = '"+u.getPass()+"';");
+			ResultSet r = c.EjecutarQuery("select tipo from usuarios where usuario = '"+u.getUsuario()+"' and pass = '"+u.getPass()+"' and activo = 1;");
 			if (!r.next() ) {
 			    return -1;
 			} 
