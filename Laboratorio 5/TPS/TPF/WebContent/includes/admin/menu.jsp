@@ -1,0 +1,25 @@
+<ul>
+	<li>Home</li>
+	<li>Clientes
+	<ul>
+		<li>Crear</li>
+		<li>Modificar</li>
+		<li>Borrar</li>
+	</ul>
+	</li>
+	<li>Cuentas
+	<ul>
+		<li>Crear</li>
+		<li>Modificar</li>
+		<li>Borrar</li>
+	</ul>
+	</li>
+	<li>Asignar Cuentas</li>
+	<li>Servicios
+	<ul>
+		<li>Crear</li>
+		<li>Modificar</li>
+		<li>Borrar</li>
+	</ul>
+	</li>
+</ul>
