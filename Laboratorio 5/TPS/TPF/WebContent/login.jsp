@@ -33,7 +33,7 @@ function validarLogin(){
 <%
 try{
 	if (request.getAttribute("error") != null){
-		out.println("Usuario o contrase~na incorrecto.");
+		out.println("Usuario o contraseña incorrecto.");
 	}
 }
 catch(Exception e){

@@ -10,11 +10,18 @@
 <h1>Admin</h1>
 <%
 try{
-	if ((request.getAttribute("usuario") != null)){
-		out.println("hola " + request.getAttribute("usuario"));
-	} else {
-		out.println("nada aqu'i");
-	}
+    if(session != null){  
+	    if ((session.getAttribute("usuario") != null)){
+	    	if ((Integer)session.getAttribute("tipo") == 0){
+				out.println("hola " + session.getAttribute("usuario"));
+	    	} else {
+	    		session.invalidate();
+	    		response.sendRedirect("login.jsp");
+	    	}
+		} else {
+			out.println("nada aquí");
+		}
+    }
 }
 catch(Exception e){
 	out.println("error");
