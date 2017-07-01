@@ -28,3 +28,9 @@ function validarUsuarioNuevo(){
 	}
 }
 
+function validarBuscarUsuarioModificar(){
+	if (hayCampoVacio("buscarUsuarioModificarForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}

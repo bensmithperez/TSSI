@@ -5,6 +5,7 @@ import modelo.sgb.benjismithperez.com.ModeloUsuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -59,6 +60,42 @@ public class ControladorUsuario {
 			System.err.println("no anda esto");
 			e.printStackTrace();
 			u.setTipo(-1);
+		}
+	}
+	
+	public void CargarDatos(){
+		try {
+			ResultSet r = c.EjecutarQuery("select id, usuario, nombre, apellido, fechaNac "
+					+ "from usuarios join datosUsuarios "
+					+ "on usuarios.id = datosUsuarios.idUsuario "
+					+ "where dni = '"+u.getDni()+"' and activo = 1;");
+			if (!r.next() ) {
+			    u.setTipo(-1);
+			}
+			r.first();
+			System.err.println("id: " + r.getString("id") 
+			+ " usuario: " + r.getString("usuario") 
+			+ " nombre: " + r.getString("nombre") 
+			+ " apellido: " + r.getString("apellido") 
+			+ " fechaNac: " + r.getString("fechaNac"));
+			u.setId(Integer.parseInt(r.getString("id")));
+			u.setUsuario(r.getString("usuario"));
+			u.setNombre(r.getString("nombre"));
+			u.setApellido(r.getString("apellido"));
+			
+			DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+			Date fecha = (Date)formatter.parse(r.getString("fechaNac"));
+			
+			u.setFechaNac(fecha);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda esto");
+			e.printStackTrace();
+			u.setTipo(-1);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			System.err.println("algo con la fecha...");
+			e.printStackTrace();
 		}
 	}
 }
