@@ -8,18 +8,15 @@
 <%@ include file="../../includes/admin/menu.jsp" %>
 
 <form name="agregarUsuarioForm" action="${pageContext.request.contextPath}/ServerletAgregarUsuario" method="post" onsubmit="return validarUsuarioNuevo()">
-	<fieldset>
-	    <legend>Datos Personales:</legend>
-		<input type="text" name="nombre" placeholder="Nombre"><br>
-		<input type="text" name="apellido" placeholder="Apellido"><br>
-		<input type="text" name="dni" placeholder="12345678"><br>
-		<input type="text" name="fechaNac" placeholder="dd/mm/aaaa"><br>
-	</fieldset>
-	<fieldset>
-	    <legend>Datos Usuario:</legend>
-		<input type="text" name="usuario" placeholder="nuevo usuario"><br>
-		<input type="password" name="pass" placeholder="nueva contraseña"><br>
-	</fieldset>
+
+	<input type="text" name="nombre" placeholder="Nombre"><br>
+	<input type="text" name="apellido" placeholder="Apellido"><br>
+	<input type="text" name="dni" placeholder="12345678"><br>
+	<input type="text" name="fechaNac" placeholder="dd/mm/aaaa"><br>
+	<br>
+	<input type="text" name="usuario" placeholder="nuevo usuario"><br>
+	<input type="password" name="pass" placeholder="nueva contraseña"><br>
+
 	<input type="submit" name="ingresar" value="Crear">
 </form>
 <p id="error">

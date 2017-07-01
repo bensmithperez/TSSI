@@ -22,10 +22,8 @@ public class ControladorUsuario {
 	}
 	
 	public boolean Agregar(){
-		try {
-			DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-		    String fechaNac = df.format(u.getFechaNac());
-		    
+		try {	    
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		    String q1 = "insert into usuarios(tipo,usuario,pass,activo) values("
 					+ u.getTipo()+",'"
 					+u.getUsuario()+"','"
@@ -35,7 +33,7 @@ public class ControladorUsuario {
 					+u.getDni()+"',?,'"
 					+u.getNombre()+"','"
 					+u.getApellido()+"','"
-					+fechaNac+" 00:00:00');";
+					+format.format(u.getFechaNac())+" 00:00:00');";
 			c.EjecutarUpdateCompuesto(q1,q2);
 			return true;
 			

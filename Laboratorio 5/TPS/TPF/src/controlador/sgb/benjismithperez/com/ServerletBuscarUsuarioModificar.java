@@ -1,3 +1,4 @@
+
 package controlador.sgb.benjismithperez.com;
 
 import java.io.IOException;
@@ -42,7 +43,6 @@ public class ServerletBuscarUsuarioModificar extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ModeloUsuario u = new ModeloUsuario();
 		u.setDni(request.getParameter("dni"));
-		HttpSession session = request.getSession();
 		
 		ControladorUsuario c = new ControladorUsuario(u);
 		
@@ -52,7 +52,7 @@ public class ServerletBuscarUsuarioModificar extends HttpServlet {
 			request.setAttribute("usuario", u.getUsuario());
 			request.setAttribute("nombre", u.getNombre());
 			request.setAttribute("apellido", u.getApellido());
-			request.setAttribute("fechaNac", u.getFechaNac());
+			request.setAttribute("fechaNac", u.getFechaNacString());
 			RequestDispatcher rd = request.getRequestDispatcher("admin/clientes/modificar.jsp");
 			rd.forward(request, response);
 		}

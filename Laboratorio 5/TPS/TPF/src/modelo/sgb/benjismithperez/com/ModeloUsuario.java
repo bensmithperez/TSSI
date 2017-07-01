@@ -3,6 +3,8 @@ package modelo.sgb.benjismithperez.com;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class ModeloUsuario {
@@ -96,6 +98,11 @@ public class ModeloUsuario {
 
 	public Date getFechaNac() {
 		return fechaNac;
+	}
+	
+	public String getFechaNacString(){
+		DateFormat format = new SimpleDateFormat("d/M/y");
+		return format.format(fechaNac);
 	}
 
 	public void setFechaNac(Date fechaNac) {

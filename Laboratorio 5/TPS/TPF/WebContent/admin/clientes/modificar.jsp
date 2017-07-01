@@ -24,22 +24,21 @@ catch(Exception e){
 %>
 </p>
 
-<form name="modificarUsuarioForm" action="${pageContext.request.contextPath}/ServerletModificarUsuario" method="post" onsubmit="return validarUsuarioModificar()">
-	<fieldset>
-	    <legend>Datos Personales:</legend>
-		<input type="text" name="nombre" placeholder="Nombre" value="${nombre}"><br>
-		<input type="text" name="apellido" placeholder="Apellido" value="${apellido}"><br>
-		<input type="text" name="fechaNac" placeholder="dd/mm/aaaa" value="${fechaNac}"><br>
-	</fieldset>
-	<fieldset>
-	    <legend>Datos Usuario:</legend>
-	    <input type="text" name="id" placeholder="00" value="${id}" disabled><br>
-		<input type="text" name="usuario" placeholder="usuario" value="${usuario}" disabled><br>
-		<input type="password" name="pass" placeholder="nueva contraseña"><br>
-	</fieldset>
+<form name="usuarioModificarForm" action="${pageContext.request.contextPath}/ServerletModificarUsuario" method="post" onsubmit="return validarUsuarioModificar()">
+
+	<input type="text" name="nombre" placeholder="Nombre" value="${nombre}"><br>
+	<input type="text" name="apellido" placeholder="Apellido" value="${apellido}"><br>
+	<input type="text" name="fechaNac" placeholder="dd/mm/aaaa" value="${fechaNac}"><br>
+	<br>
+    <input type="text" name="id" placeholder="00" value="${id}" disabled><br>
+	<input type="text" name="usuario" placeholder="usuario" value="${usuario}" disabled><br>
+
 	<input type="submit" name="modificar" value="Modificar">
 </form>
 
+<p id="error1"></p>
+
+<a href="<%=request.getContextPath()%>/admin/clientes/cambiarContrasenia.jsp?usuario=${id}">Cambiar Contraseña</a>
 <%@ include file="../../includes/admin/footer.jsp" %>
 </body>
 </html>

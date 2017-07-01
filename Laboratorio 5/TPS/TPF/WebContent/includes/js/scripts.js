@@ -6,10 +6,16 @@ function isNullOrWhitespace(input){
 
 function hayCampoVacio(nombreForm){
 	var elements = document.forms[nombreForm].elements;
-
-	for (var i = 0, element; element = elements[i++];) {
-		if (isNullOrWhitespace(element.value))
+//	console.log(elements);
+	for (var i = 0; i < elements.length; i++) {
+		console.log(elements[i]);
+		console.log(elements[i].value);
+		
+		if (isNullOrWhitespace(elements[i].value)){
+			console.log("vacio!");
 			return true;
+		}
+		console.log("tiene algo");
 	}
 	return false;
 }
@@ -22,7 +28,9 @@ function validarLogin(){
 }
 
 function validarUsuarioNuevo(){
+	console.log("en validar usuario");
 	if (hayCampoVacio("agregarUsuarioForm")){
+		console.log("encontré dato vacio");
 		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
 		return false;
 	}
@@ -30,6 +38,20 @@ function validarUsuarioNuevo(){
 
 function validarBuscarUsuarioModificar(){
 	if (hayCampoVacio("buscarUsuarioModificarForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}
+
+function validarUsuarioModificar(){
+	if (hayCampoVacio("usuarioModificarForm")){
+		document.getElementById("error1").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}
+
+function validarCambiarContrasenia(){
+	if (hayCampoVacio("cambiarContraseniaUsuarioForm")){
 		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
 		return false;
 	}

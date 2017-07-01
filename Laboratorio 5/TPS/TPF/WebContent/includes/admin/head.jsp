@@ -3,5 +3,5 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SGB - Admin</title>
-<script src="../js/scripts.js"></script>
+<script src="${pageContext.request.contextPath}/includes/js/scripts.js"></script>
 </head>
