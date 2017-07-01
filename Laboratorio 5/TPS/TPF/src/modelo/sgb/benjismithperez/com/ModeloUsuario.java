@@ -11,6 +11,7 @@ public class ModeloUsuario {
 	private int tipo;
 	private String usuario;
 	private String pass;
+	private boolean activo;
 	//datos tabla datosUsuarios
 	private String nombre;
 	private String apellido;
@@ -21,19 +22,21 @@ public class ModeloUsuario {
 		
 	}
 	
-	
-	
-	public ModeloUsuario(int tipo, String usuario, String pass, String nombre, String apellido, String dni,Date fechaNac) {
+	public ModeloUsuario(int tipo, String usuario, String pass, boolean activo , String nombre, String apellido, String dni,Date fechaNac) {
 		this.tipo = tipo;
 		this.usuario = usuario;
-		this.pass = pass;
+		try {
+			setPass(pass);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.activo = activo;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.dni = dni;
 		this.fechaNac = fechaNac;
 	}
-
-
 
 	public int getId() {
 		return id;

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ControladorConexion {
 	private Connection con;
@@ -23,9 +24,43 @@ public class ControladorConexion {
 		return stmt.executeQuery(sql);
 	}
 
-	public int EjecutarUpdate(String sql) throws SQLException{
+	public int EjecutarUpdateSimple(String sql) throws SQLException{
 		con = ModeloConexion.getConnection();
 		stmt = con.createStatement();
 		return stmt.executeUpdate(sql);
+	}
+	
+	public boolean EjecutarUpdateCompuesto(String q1, String q2) throws SQLException{
+		con = ModeloConexion.getConnection();
+		boolean res = false;
+		
+		try
+		{
+			con.setAutoCommit(false);
+			stmt = con.createStatement();
+			int indice = stmt.executeUpdate(q1, Statement.RETURN_GENERATED_KEYS);
+			
+			System.err.println("indice es: " + indice);
+			q2 = q2.replace("?",Integer.toString(indice));
+			System.err.println(q1);
+			System.err.println(q2);
+			
+			System.err.println(stmt.executeUpdate(q2));
+			
+			con.commit();
+			
+			res = true;
+		}
+		catch(Exception e)
+		{
+			
+			System.err.println(e);
+			con.rollback();
+		}
+		finally
+		{
+		   con.close();
+		}
+		return res;
 	}
 }

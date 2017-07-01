@@ -5,22 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>SGB</title>
-<script>
-function isNullOrWhitespace(input){
-	if(typeof input === 'undefined' || input == null) return true;
-	
-	return input.replace(/\s/g,'').length < 1;
-}
-
-function validarLogin(){
-	var usuario = document.forms["loginForm"]["usuario"].value;
-	var pass = document.forms["loginForm"]["pass"].value;
-	if (isNullOrWhitespace(usuario) || isNullOrWhitespace(pass)){
-		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
-		return false;
-	}
-}
-</script>
+<script src="includes/js/scripts.js"></script>
 </head>
 <body>
 <h1>Login</h1>
@@ -42,21 +27,6 @@ catch(Exception e){
 %>
 </p>
 
-<form name="agregarUsuarioForm" action="ServerletAgregarUsuario" method="post" onsubmit="">
-	<fieldset>
-	    <legend>Datos Personales:</legend>
-		<input type="text" name="nombre" placeholder="Nombre"><br>
-		<input type="text" name="apellido" placeholder="Apellido"><br>
-		<input type="text" name="dni" placeholder="12345678"><br>
-		<input type="date" name="fechaNac" placeholder="ddmmaaaa"><br>
-	</fieldset>
-	<fieldset>
-	    <legend>Datos Usuario:</legend>
-		<input type="text" name="usuario" placeholder="nuevo usuario"><br>
-		<input type="password" name="pass" placeholder="nueva contraseña"><br>
-	</fieldset>
-	<input type="submit" name="ingresar" value="Crear">
-</form>
 
 </body>
 </html>
