@@ -17,11 +17,11 @@ public class ModeloUsuario {
 	private String apellido;
 	private String dni;
 	private Date fechaNac;
-	
+		
 	public ModeloUsuario() {
 		
 	}
-	
+
 	public ModeloUsuario(int tipo, String usuario, String pass, boolean activo , String nombre, String apellido, String dni,Date fechaNac) {
 		this.tipo = tipo;
 		this.usuario = usuario;

@@ -44,29 +44,28 @@ public class ServerletLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		ModeloUsuario u = new ModeloUsuario();
-		u.setTipo(0);
 		u.setUsuario(request.getParameter("usuario"));
 		try {
 			HttpSession session = request.getSession();
 			u.setPass(request.getParameter("pass"));
 			
 			ControladorUsuario c = new ControladorUsuario(u);
+			
 			try{
-				int res = c.Buscar();
-				if (res == -1 || res > 1){
-					 
+				c.BuscarTipo();
+				if (u.getTipo() == -1 || u.getTipo() > 1){ 
 					session.setAttribute("usuarioIncorrecto", true);
 					RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 					rd.forward(request, response);		
-				} else if (res == 0){ 
+				} else if (u.getTipo() == 0){ 
 					session.setAttribute("usuario", u.getUsuario());
 					session.setAttribute("tipo", u.getTipo());
 					RequestDispatcher rd = request.getRequestDispatcher("admin/home.jsp");
 					rd.forward(request, response);
-				} else if (res == 1){ 
+				} else if (u.getTipo() == 1){ 
 					session.setAttribute("usuario", u.getUsuario());
 					session.setAttribute("tipo", u.getTipo());
-					RequestDispatcher rd = request.getRequestDispatcher("usuario/home.jsp");
+					RequestDispatcher rd = request.getRequestDispatcher("cliente/home.jsp");
 					rd.forward(request, response);
 				}	
 			}

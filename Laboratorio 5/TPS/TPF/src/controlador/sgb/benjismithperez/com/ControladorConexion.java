@@ -56,7 +56,6 @@ public class ControladorConexion {
 		}
 		catch(Exception e)
 		{
-			
 			System.err.println(e);
 			con.rollback();
 		}

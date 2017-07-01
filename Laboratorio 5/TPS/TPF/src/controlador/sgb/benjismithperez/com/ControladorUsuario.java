@@ -46,20 +46,19 @@ public class ControladorUsuario {
 		}
 	}
 	
-	public int Buscar(){
+	public void BuscarTipo(){
 		try {
 			ResultSet r = c.EjecutarQuery("select tipo from usuarios where usuario = '"+u.getUsuario()+"' and pass = '"+u.getPass()+"' and activo = 1;");
 			if (!r.next() ) {
-			    return -1;
-			} 
-			System.err.println("anda esto");
+			    u.setTipo(-1);
+			}
 			r.first();
-			return r.getInt(1);
+			u.setTipo(r.getInt(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			System.err.println("no anda esto");
 			e.printStackTrace();
-			return -1;
+			u.setTipo(-1);
 		}
 	}
 }

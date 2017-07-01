@@ -6,6 +6,13 @@
 <h2>Modificar Cliente</h2>
 <%@ include file="/includes/admin/autenticacion.jsp" %>
 <%@ include file="../../includes/admin/menu.jsp" %>
+
+<form name="buscarUsuarioModificarForm" action="ServerletBuscarUsuarioModificar" method="post" onsubmit="return validarLogin("")">
+	<input type="text" name="usuario" placeholder="usuario">
+	<input type="password" name="pass" placeholder="contraseña">
+	<input type="submit" name="ingresar" value="Ingresar">
+</form>
+
 <%@ include file="../../includes/admin/footer.jsp" %>
 </body>
 </html>
