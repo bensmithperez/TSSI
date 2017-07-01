@@ -29,3 +29,8 @@ CREATE TABLE (
 
 select * from usuarios;
 select * from datosUsuarios;
+
+delete from usuarios where id = 2;
+delete from datosUsuarios where dni = "11111111";
+
+insert into usuarios(tipo,usuario,pass,activo) values (1,"aruma",SHA2("123",256),1);

@@ -47,23 +47,23 @@ public class ServerletLogin extends HttpServlet {
 		u.setTipo(0);
 		u.setUsuario(request.getParameter("usuario"));
 		try {
+			HttpSession session = request.getSession();
 			u.setPass(request.getParameter("pass"));
 			
 			ControladorUsuario c = new ControladorUsuario(u);
 			try{
 				int res = c.Buscar();
 				if (res == -1 || res > 1){
-					request.setAttribute("error", true);
+					 
+					session.setAttribute("usuarioIncorrecto", true);
 					RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
 					rd.forward(request, response);		
-				} else if (res == 0){
-					HttpSession session = request.getSession(); 
+				} else if (res == 0){ 
 					session.setAttribute("usuario", u.getUsuario());
 					session.setAttribute("tipo", u.getTipo());
 					RequestDispatcher rd = request.getRequestDispatcher("admin/home.jsp");
 					rd.forward(request, response);
-				} else if (res == 1){
-					HttpSession session = request.getSession(); 
+				} else if (res == 1){ 
 					session.setAttribute("usuario", u.getUsuario());
 					session.setAttribute("tipo", u.getTipo());
 					RequestDispatcher rd = request.getRequestDispatcher("usuario/home.jsp");

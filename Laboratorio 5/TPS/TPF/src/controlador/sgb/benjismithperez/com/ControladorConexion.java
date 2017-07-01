@@ -38,8 +38,11 @@ public class ControladorConexion {
 		{
 			con.setAutoCommit(false);
 			stmt = con.createStatement();
-			int indice = stmt.executeUpdate(q1, Statement.RETURN_GENERATED_KEYS);
-			
+			stmt.executeUpdate(q1, Statement.RETURN_GENERATED_KEYS);
+			ResultSet rs = stmt.getGeneratedKeys();
+			rs.first();
+			int indice = rs.getInt(1);
+
 			System.err.println("indice es: " + indice);
 			q2 = q2.replace("?",Integer.toString(indice));
 			System.err.println(q1);

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import modelo.sgb.benjismithperez.com.ModeloUsuario;
 
@@ -44,7 +45,18 @@ public class ServerletAgregarUsuario extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DateFormat format = new SimpleDateFormat("d/M/y");
 		Date fechaNac;
+		HttpSession session = request.getSession(); 
+		
 		try {
+			//limpio cosos de sesión...
+			if (session.getAttribute("errorCU") != null){
+				session.removeAttribute("errorCU");
+			}
+			if (session.getAttribute("usuarioCreado") != null){
+				session.removeAttribute("usuarioCreado");
+			}
+			
+			//creo un modelo de usario para usar el controlador...
 			fechaNac = format.parse(request.getParameter("fechaNac"));
 			
 			ModeloUsuario u = new ModeloUsuario(1,
@@ -58,12 +70,17 @@ public class ServerletAgregarUsuario extends HttpServlet {
 			
 			ControladorUsuario c = new ControladorUsuario(u);
 			c.Agregar();
-			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-			rd.forward(request, response);	
+			
+			session.setAttribute("usuarioCreado", "true");
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
+			session.setAttribute("errorCU", "true");
+			
 			e.printStackTrace();
 		}
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/clientes/crear.jsp");
+		rd.forward(request, response);	
 	}
 
 }

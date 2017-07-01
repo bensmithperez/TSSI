@@ -17,7 +17,7 @@
 <p id="error">
 <%
 try{
-	if (request.getAttribute("error") != null){
+	if (session.getAttribute("usuarioIncorrecto") != null){
 		out.println("Usuario o contraseña incorrecto.");
 	}
 }
@@ -26,7 +26,6 @@ catch(Exception e){
 }
 %>
 </p>
-
 
 </body>
 </html>

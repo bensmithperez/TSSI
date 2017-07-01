@@ -31,7 +31,7 @@ public class ControladorUsuario {
 					+u.getPass()+"',1);";
 			
 			String q2 = "insert into datosUsuarios(dni,idUsuario,nombre,apellido,fechaNac) values('"
-					+u.getDni()+"','?','"
+					+u.getDni()+"',?,'"
 					+u.getNombre()+"','"
 					+u.getApellido()+"','"
 					+fechaNac+" 00:00:00');";

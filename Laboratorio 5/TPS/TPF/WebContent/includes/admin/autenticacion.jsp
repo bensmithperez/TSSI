@@ -6,11 +6,11 @@ try{
 				out.println("hola " + session.getAttribute("usuario"));
 	    	} else {
 	    		session.invalidate();
-	    		response.sendRedirect("login.jsp");
+	    		response.sendRedirect(request.getContextPath()+"/login.jsp");
 	    	}
 		} else {
 			session.invalidate();
-    		response.sendRedirect("login.jsp");
+    		response.sendRedirect(request.getContextPath()+"/login.jsp");
 		}
     }
 }
