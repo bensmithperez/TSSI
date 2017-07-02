@@ -56,3 +56,17 @@ function validarCambiarContrasenia(){
 		return false;
 	}
 }
+
+function validarBuscarUsuarioBorrar(){
+	if (hayCampoVacio("buscarUsuarioBorrarForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}
+
+function validarUsuarioBorrar(){
+	if (hayCampoVacio("usuarioBorrarForm")){
+		document.getElementById("error1").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}
