@@ -16,6 +16,9 @@ try{
 	if (request.getAttribute("exitoContraseniaCliente") != null){
 		out.println("La contraseña fue modificada exitosamente!");
 	}
+	if (request.getAttribute("exitoBorrarCuenta") != null){
+		out.println("La cuenta fue borrada con exito!");
+	}
 }
 catch(Exception e){
 	out.println("error");

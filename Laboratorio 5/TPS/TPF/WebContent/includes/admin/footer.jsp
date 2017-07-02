@@ -1,1 +1,3 @@
-<footer>footer...</footer>
+<footer>
+<p>--<br>footer...<br>--</p>
+</footer>

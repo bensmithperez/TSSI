@@ -11,7 +11,7 @@
 
 	<input type="text" name="nombre" placeholder="Nombre"><br>
 	<input type="text" name="apellido" placeholder="Apellido"><br>
-	<input type="text" name="dni" placeholder="12345678"><br>
+	<input type="number" name="dni" placeholder="12345678"><br>
 	<input type="text" name="fechaNac" placeholder="dd/mm/aaaa"><br>
 	<br>
 	<input type="text" name="usuario" placeholder="nuevo usuario"><br>

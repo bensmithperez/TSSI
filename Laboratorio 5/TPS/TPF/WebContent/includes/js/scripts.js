@@ -4,6 +4,15 @@ function isNullOrWhitespace(input){
 	return input.replace(/\s/g,'').length < 1;
 }
 
+function esFechaValida(fecha){
+	var fechaValida = "\d{2}\/\d{2}\/\d{4}";
+	if (fechaValida.test(fecha)){
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function hayCampoVacio(nombreForm){
 	var elements = document.forms[nombreForm].elements;
 //	console.log(elements);
@@ -32,6 +41,11 @@ function validarUsuarioNuevo(){
 	if (hayCampoVacio("agregarUsuarioForm")){
 		console.log("encontré dato vacio");
 		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+	var dni = document.forms["agregarUsuarioForm"]["dni"].value;
+	if (numCuenta.length<8){
+		document.getElementById("error").innerHTML = "dni invalido.";
 		return false;
 	}
 }
@@ -69,4 +83,34 @@ function validarUsuarioBorrar(){
 		document.getElementById("error1").innerHTML = "Es necesario completar todos los campos.";
 		return false;
 	}
+}
+
+function validarCuentaNueva(){
+	if (hayCampoVacio("agregarCuentaForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+	var numCuenta = document.forms["agregarCuentaForm"]["numCuenta"].value;
+	var monto = document.forms["agregarCuentaForm"]["monto"].value;
+	if (numCuenta.length<13){
+		document.getElementById("error").innerHTML = "Numero de cuenta invalido.";
+		return false;
+	}
+	if (monto<0){
+		document.getElementById("error").innerHTML = "Monto invalido.";
+		return false;
+	}
+}
+
+function validarBorrarCuenta(){
+	if (hayCampoVacio("borrarCuentaForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+	var numCuenta = document.forms["borrarCuentaForm"]["numCuenta"].value;
+	if (numCuenta.length<13){
+		document.getElementById("error").innerHTML = "Numero de cuenta invalido.";
+		return false;
+	}
+
 }
