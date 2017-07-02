@@ -116,4 +116,21 @@ public class ControladorUsuario {
 			return false;
 		}
 	}
+	
+	public boolean CambiarContraeniaUsuario(){
+		try {	    
+		    String q1 = "update usuarios set "
+		    		+ "pass = '" + u.getPass() + "'"
+					+ "where id = " + u.getId() + ";";
+		    
+		    c.EjecutarUpdateSimple(q1);
+			return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda cambiarContraseniaUsuario");
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

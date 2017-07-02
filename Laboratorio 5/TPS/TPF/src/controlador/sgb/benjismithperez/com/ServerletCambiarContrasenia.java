@@ -1,8 +1,8 @@
 package controlador.sgb.benjismithperez.com;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import modelo.sgb.benjismithperez.com.ModeloUsuario;
 
 /**
- * Servlet implementation class ServerletModificarUsuario
+ * Servlet implementation class ServerletCambiarContrasenia
  */
-@WebServlet("/ServerletModificarUsuario")
-public class ServerletModificarUsuario extends HttpServlet {
+@WebServlet("/ServerletCambiarContrasenia")
+public class ServerletCambiarContrasenia extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServerletModificarUsuario() {
+    public ServerletCambiarContrasenia() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,45 +42,28 @@ public class ServerletModificarUsuario extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		DateFormat format = new SimpleDateFormat("d/M/y");
-		Date fechaNac;
-		
-		try {
-			fechaNac = format.parse(request.getParameter("fechaNac"));
-			
-			ModeloUsuario u = new ModeloUsuario();
-			u.setNombre(request.getParameter("nombre"));
-			u.setApellido(request.getParameter("apellido"));
-			u.setFechaNac(fechaNac);
-			System.err.println(request.getParameter("id"));
-			int id = Integer.parseInt(request.getParameter("id"));
-			System.err.println("id: "+id);
-			u.setId(id);
-			u.setUsuario(request.getParameter("usuario"));
 
-			request.setAttribute("id", Integer.toString(u.getId()));
-			request.setAttribute("usuario", u.getUsuario());
-			request.setAttribute("nombre", u.getNombre());
-			request.setAttribute("apellido", u.getApellido());
-			request.setAttribute("fechaNac", u.getFechaNacString());
+		ModeloUsuario u = new ModeloUsuario();
+		System.err.println(request.getParameter("id"));
+		int id = Integer.parseInt(request.getParameter("id"));
+		u.setId(id);
+
+		try {
+			u.setPass(request.getParameter("pass"));
 			
 			ControladorUsuario c = new ControladorUsuario(u);
-			if (c.ModificarDatosUsuario()){
-				request.setAttribute("exitoModificarCliente", "true");
+			if (c.CambiarContraeniaUsuario()){
+				request.setAttribute("exitoModificarContrasenia", "true");
 				RequestDispatcher rd = request.getRequestDispatcher("/admin/exito.jsp");
 				rd.forward(request, response);
 			} else {
-				request.setAttribute("errorModificarCliente", "true");
-				RequestDispatcher rd = request.getRequestDispatcher("/admin/clientes/modificar.jsp");
+				request.setAttribute("errorModificarContrasenia", "true");
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/clientes/cambiarContrasenia.jsp");
 				rd.forward(request, response);
 			}
-			
-			
-		} catch (ParseException e) {
+		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-
 }

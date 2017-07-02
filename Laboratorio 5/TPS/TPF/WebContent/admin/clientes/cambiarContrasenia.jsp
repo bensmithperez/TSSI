@@ -10,12 +10,23 @@
 
 <p>Cambiar contraseña:</p>
 
-<form name="cambiarContraseniaUsuarioForm" action="${pageContext.request.contextPath}/ServerletCambiarContraseña" method="post" onsubmit="return validarCambiarContrasenia()">
-	<input type="text" name="id" placeholder="${param.usuario}" disabled>
+<form name="cambiarContraseniaUsuarioForm" action="${pageContext.request.contextPath}/ServerletCambiarContrasenia" method="post" onsubmit="return validarCambiarContrasenia()">
+	<input type="text" name="id" value="${param.usuario}" readonly="readonly">
 	<input type="password" name="pass" placeholder="nueva contraseña">
 	<input type="submit" name="cambiar" value="Cambiar">
 </form>
-<p id="error"></p>
+<p id="error">
+<%
+try{
+	if (session.getAttribute("errorCambiarContrasenia") != null){
+		out.println("Hubo un error al cambiar la contraseña.");
+	}
+}
+catch(Exception e){
+	out.println("error");
+}
+%>
+</p>
 
 <%@ include file="../../includes/admin/footer.jsp" %>
 </body>

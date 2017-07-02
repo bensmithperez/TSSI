@@ -13,6 +13,9 @@ try{
 	if (request.getAttribute("exitoModificarCliente") != null){
 		out.println("El registro fue modificado exitosamente!");
 	}
+	if (request.getAttribute("exitoContraseniaCliente") != null){
+		out.println("La contraseña fue modificada exitosamente!");
+	}
 }
 catch(Exception e){
 	out.println("error");
