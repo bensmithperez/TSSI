@@ -2,10 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@ include file="../../includes/admin/head.jsp" %>
 <body>
-<h1>Admin</h1>
-<h2>Crear Cuenta</h2>
+
 <%@ include file="../../includes/admin/autenticacion.jsp" %>
 <%@ include file="../../includes/admin/menu.jsp" %>
+<h1>Admin</h1>
+<h2>Crear Cuenta</h2>
 
 <form name="agregarCuentaForm" action="${pageContext.request.contextPath}/ServerletAgregarCuenta" method="post" onsubmit="return validarCuentaNueva()">
 

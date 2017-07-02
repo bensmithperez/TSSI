@@ -36,6 +36,7 @@ CREATE TABLE (
 
 select * from usuarios;
 select * from datosUsuarios;
+select * from cuentas;
 
 -- seleccionar datos de un usuario --
 select id, usuario, nombre, apellido, fechaNac 

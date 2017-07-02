@@ -48,15 +48,21 @@ public class ServerletBuscarUsuarioModificar extends HttpServlet {
 		
 		try{
 			c.CargarDatos();
-			request.setAttribute("id", u.getId());
-			request.setAttribute("usuario", u.getUsuario());
-			request.setAttribute("nombre", u.getNombre());
-			request.setAttribute("apellido", u.getApellido());
-			request.setAttribute("fechaNac", u.getFechaNacString());
-			request.setAttribute("cambiarContrasenia", request.getContextPath()+"/admin/clientes/cambiarContrasenia.jsp?usuario="+u.getId());
-			request.setAttribute("cambiarContraseniaTexto", "Cambiar Contraseña");
-			RequestDispatcher rd = request.getRequestDispatcher("admin/clientes/modificar.jsp");
-			rd.forward(request, response);
+			if (u.getTipo()!=-1){
+				request.setAttribute("id", u.getId());
+				request.setAttribute("usuario", u.getUsuario());
+				request.setAttribute("nombre", u.getNombre());
+				request.setAttribute("apellido", u.getApellido());
+				request.setAttribute("fechaNac", u.getFechaNacString());
+				request.setAttribute("cambiarContrasenia", request.getContextPath()+"/admin/clientes/cambiarContrasenia.jsp?usuario="+u.getId());
+				request.setAttribute("cambiarContraseniaTexto", "Cambiar Contraseña");
+				RequestDispatcher rd = request.getRequestDispatcher("admin/clientes/modificar.jsp");
+				rd.forward(request, response);
+			} else {
+				request.setAttribute("usuarioNoExiste", "true");
+				RequestDispatcher rd = request.getRequestDispatcher("admin/clientes/modificar.jsp");
+				rd.forward(request, response);
+			}
 		}
 		catch(Exception e){
 			e.printStackTrace();

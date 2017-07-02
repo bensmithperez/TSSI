@@ -2,10 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@ include file="../../includes/admin/head.jsp" %>
 <body>
-<h1>Admin</h1>
-<h2>Modificar Cliente</h2>
+
 <%@ include file="/includes/admin/autenticacion.jsp" %>
 <%@ include file="../../includes/admin/menu.jsp" %>
+<h1>Admin</h1>
+<h2>Modificar Cliente</h2>
 <p>Ingresar cliente a modificar:</p>
 <form name="buscarUsuarioModificarForm" action="${pageContext.request.contextPath}/ServerletBuscarUsuarioModificar" method="post" onsubmit="return validarBuscarUsuarioModificar()">
 	<input type="text" name="dni" placeholder="12345678">
@@ -14,7 +15,7 @@
 <p id="error">
 <%
 try{
-	if (session.getAttribute("usuarioNoExiste") != null){
+	if (request.getAttribute("usuarioNoExiste") != null){
 		out.println("Usuario no existe.");
 	}
 }

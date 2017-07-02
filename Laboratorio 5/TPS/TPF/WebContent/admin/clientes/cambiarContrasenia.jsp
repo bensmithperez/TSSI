@@ -2,12 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 <%@ include file="../../includes/admin/head.jsp" %>
 <body>
-<h1>Admin</h1>
-<h2>Modificar Cliente</h2>
+
 
 <%@ include file="/includes/admin/autenticacion.jsp" %>
 <%@ include file="../../includes/admin/menu.jsp" %>
-
+<h1>Admin</h1>
+<h2>Modificar Cliente</h2>
 <p>Cambiar contraseña:</p>
 
 <form name="cambiarContraseniaUsuarioForm" action="${pageContext.request.contextPath}/ServerletCambiarContrasenia" method="post" onsubmit="return validarCambiarContrasenia()">
