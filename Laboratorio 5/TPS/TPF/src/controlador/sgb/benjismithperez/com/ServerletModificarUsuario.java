@@ -53,7 +53,10 @@ public class ServerletModificarUsuario extends HttpServlet {
 			u.setNombre(request.getParameter("nombre"));
 			u.setApellido(request.getParameter("apellido"));
 			u.setFechaNac(fechaNac);
-			u.setId(Integer.parseInt(request.getParameter("id")));
+			System.err.println(request.getParameter("id"));
+			int id = Integer.parseInt(request.getParameter("id"));
+			System.err.println("id: "+id);
+			u.setId(id);
 			u.setUsuario(request.getParameter("usuario"));
 
 			request.setAttribute("id", Integer.toString(u.getId()));
@@ -62,8 +65,17 @@ public class ServerletModificarUsuario extends HttpServlet {
 			request.setAttribute("apellido", u.getApellido());
 			request.setAttribute("fechaNac", u.getFechaNacString());
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/exitoModificar.jsp");
-			rd.forward(request, response);
+			ControladorUsuario c = new ControladorUsuario(u);
+			if (c.ModificarDatosUsuario()){
+				request.setAttribute("exitoModificarCliente", "true");
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/exitoModificar.jsp");
+				rd.forward(request, response);
+			} else {
+				request.setAttribute("errorModificarCliente", "true");
+				RequestDispatcher rd = request.getRequestDispatcher("/admin/clientes/modificar.jsp");
+				rd.forward(request, response);
+			}
+			
 			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

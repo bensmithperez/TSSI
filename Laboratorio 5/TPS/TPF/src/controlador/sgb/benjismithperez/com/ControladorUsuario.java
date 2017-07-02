@@ -39,7 +39,7 @@ public class ControladorUsuario {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.err.println("no anda esto");
+			System.err.println("no anda agregar");
 			e.printStackTrace();
 			return false;
 		}
@@ -55,7 +55,7 @@ public class ControladorUsuario {
 			u.setTipo(r.getInt(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.err.println("no anda esto");
+			System.err.println("no anda buscarTipo");
 			e.printStackTrace();
 			u.setTipo(-1);
 		}
@@ -87,13 +87,33 @@ public class ControladorUsuario {
 			u.setFechaNac(fecha);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.err.println("no anda esto");
+			System.err.println("no anda cargarDatos");
 			e.printStackTrace();
 			u.setTipo(-1);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			System.err.println("algo con la fecha...");
 			e.printStackTrace();
+		}
+	}
+	
+	public boolean ModificarDatosUsuario(){
+		try {	    
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		    String q1 = "update datosUsuarios set "
+		    		+ "nombre = '" + u.getNombre() + "',"
+    				+ "apellido = '" + u.getApellido() + "',"
+					+ "fechaNac = '" + format.format(u.getFechaNac())+" 00:00:00' "
+					+ "where idUsuario = " + u.getId() + ";";
+		    
+		    c.EjecutarUpdateSimple(q1);
+			return true;
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda modificarDatosUsuario");
+			e.printStackTrace();
+			return false;
 		}
 	}
 }

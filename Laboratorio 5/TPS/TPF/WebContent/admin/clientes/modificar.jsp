@@ -30,15 +30,26 @@ catch(Exception e){
 	<input type="text" name="apellido" placeholder="Apellido" value="${apellido}"><br>
 	<input type="text" name="fechaNac" placeholder="dd/mm/aaaa" value="${fechaNac}"><br>
 	<br>
-    <input type="text" name="id" placeholder="00" value="${id}" disabled><br>
-	<input type="text" name="usuario" placeholder="usuario" value="${usuario}" disabled><br>
+    <input type="text" name="id" placeholder="00" value="${id}" readonly="readonly"><br>
+	<input type="text" name="usuario" placeholder="usuario" value="${usuario}" readonly="readonly"><br>
 
 	<input type="submit" name="modificar" value="Modificar">
 </form>
 
-<p id="error1"></p>
+<p id="error1">
+<%
+try{
+	if (session.getAttribute("errorModificarUsuario") != null){
+		out.println("Hubo un error al modificar el usuario.");
+	}
+}
+catch(Exception e){
+	out.println("error");
+}
+%>
+</p>
 
-<a href="<%=request.getContextPath()%>/admin/clientes/cambiarContrasenia.jsp?usuario=${id}">Cambiar Contraseña</a>
+<a href="${cambiarContrasenia}">${cambiarContraseniaTexto}</a>
 <%@ include file="../../includes/admin/footer.jsp" %>
 </body>
 </html>

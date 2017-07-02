@@ -30,7 +30,17 @@ CREATE TABLE (
 select * from usuarios;
 select * from datosUsuarios;
 
+-- seleccionar datos de un usuario --
+select id, usuario, nombre, apellido, fechaNac 
+from usuarios 
+join datosUsuarios on 
+usuarios.id = datosUsuarios.idUsuario
+where dni = "11111111"
+and activo = 1;
+
 delete from usuarios where id = 2;
 delete from datosUsuarios where dni = "11111111";
 
 insert into usuarios(tipo,usuario,pass,activo) values (1,"aruma",SHA2("123",256),1);
+
+update usuarios set tipo = 0 where id = 1

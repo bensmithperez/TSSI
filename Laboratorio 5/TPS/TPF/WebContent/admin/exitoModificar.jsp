@@ -10,7 +10,7 @@
 <p id="exito">
 <%
 try{
-	if (request.getAttribute("exito") != null){
+	if (request.getAttribute("exitoModificarCliente") != null){
 		out.println("El registro fue modificado exitosamente!");
 	}
 }
