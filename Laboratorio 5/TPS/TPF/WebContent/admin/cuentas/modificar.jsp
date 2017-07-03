@@ -9,6 +9,24 @@
 <h1>Admin</h1>
 <h2>Modificar Cuenta</h2>
 
+<p>Ingresar numero de cuenta a modificar:</p>
+<form name="buscarCuentaModificarForm" action="${pageContext.request.contextPath}/ServerletBuscarCuentaModificar" method="post" onsubmit="return validarBuscarCuentaModificar()">
+	<input type="text" name="dni" placeholder="12345678">
+	<input type="submit" name="ingresar" value="Ingresar">
+</form>
+<p id="error">
+<%
+try{
+	if (request.getAttribute("usuarioNoExiste") != null){
+		out.println("Usuario no existe.");
+	}
+}
+catch(Exception e){
+	out.println("error");
+}
+%>
+</p>
+
 <%@ include file="../../includes/admin/footer.jsp" %>
 </body>
 </html>
