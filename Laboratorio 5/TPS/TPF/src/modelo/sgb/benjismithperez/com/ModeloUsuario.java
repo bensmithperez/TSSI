@@ -5,7 +5,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ModeloUsuario {
 	//datos tabla usuarios
@@ -19,9 +21,10 @@ public class ModeloUsuario {
 	private String apellido;
 	private String dni;
 	private Date fechaNac;
+	private List<String> cuentas;
 		
 	public ModeloUsuario() {
-		
+		this.cuentas = new ArrayList<String>();
 	}
 
 	public ModeloUsuario(int tipo, String usuario, String pass, boolean activo , String nombre, String apellido, String dni,Date fechaNac) {
@@ -38,6 +41,7 @@ public class ModeloUsuario {
 		this.apellido = apellido;
 		this.dni = dni;
 		this.fechaNac = fechaNac;
+		this.cuentas = new ArrayList<String>();
 	}
 
 	public int getId() {
@@ -107,6 +111,5 @@ public class ModeloUsuario {
 
 	public void setFechaNac(Date fechaNac) {
 		this.fechaNac = fechaNac;
-	}	
-	
+	}
 }

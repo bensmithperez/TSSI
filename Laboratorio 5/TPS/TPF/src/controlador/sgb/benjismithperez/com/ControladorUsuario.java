@@ -61,6 +61,22 @@ public class ControladorUsuario {
 		}
 	}
 	
+	public void BuscarDni(){
+		try {
+			ResultSet r = c.EjecutarQuery("select dni from usuarios join datosUsuarios on usuarios.id = datosUsuarios.idUsuario where usuario = '"+u.getUsuario()+"' and activo = 1;");
+			if (!r.next() ) {
+			    u.setTipo(-1);
+			}
+			r.first();
+			u.setDni(r.getString(1));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda buscarDni");
+			e.printStackTrace();
+			u.setDni("-1");
+		}
+	}
+	
 	public void CargarDatos(){
 		try {
 			ResultSet r = c.EjecutarQuery("select id, usuario, nombre, apellido, fechaNac "

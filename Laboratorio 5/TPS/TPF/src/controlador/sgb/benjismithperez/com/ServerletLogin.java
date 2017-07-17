@@ -65,6 +65,7 @@ public class ServerletLogin extends HttpServlet {
 				} else if (u.getTipo() == 1){ 
 					session.setAttribute("usuario", u.getUsuario());
 					session.setAttribute("tipo", u.getTipo());
+					
 					RequestDispatcher rd = request.getRequestDispatcher("cliente/home.jsp");
 					rd.forward(request, response);
 				}	
