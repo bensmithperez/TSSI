@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import modelo.sgb.benjismithperez.com.ModeloCuenta;
 import modelo.sgb.benjismithperez.com.ModeloUsuario;
+import modelo.sgb.benjismithperez.com.ModeloUxC;
 
 /**
  * Servlet implementation class ServerletAsociarCuenta
@@ -44,13 +45,33 @@ public class ServerletAsociarCuenta extends HttpServlet {
 		u.setDni(request.getParameter("dni"));
 		ControladorCuenta c = new ControladorCuenta(cu);
 		ControladorUsuario cUs = new ControladorUsuario(u);
-		
 		if (c.CargarDatos()){
 			cUs.CargarDatos();
 			if (u.getTipo()!=-1){
-				request.setAttribute("exito", ".");
-				RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
-				rd.forward(request, response);
+				ModeloUxC mUxC = new ModeloUxC(u.getDni(),cu.getNumCuenta());
+				ControladorUxC cUxC = new ControladorUxC(mUxC); 
+				
+				if (cUxC.ValidarCantidad()){
+					if (!cUxC.ExisteAsociacion()){
+						if (cUxC.Asociar()){
+							request.setAttribute("exito", ".");
+							RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
+							rd.forward(request, response);
+						} else {
+							request.setAttribute("error", "No se pudo asociar cuenta a usuario.");
+							RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
+							rd.forward(request, response);
+						}
+					} else {
+						request.setAttribute("error", "Ya existe esta asociaci'on.");
+						RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
+						rd.forward(request, response);
+					}
+				} else {
+					request.setAttribute("error", "No se puede asociar m'as de 4 cuentas.");
+					RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
+					rd.forward(request, response);
+				}
 			} else {
 				request.setAttribute("error", "El usuario no existe.");
 				RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
@@ -62,5 +83,4 @@ public class ServerletAsociarCuenta extends HttpServlet {
 			rd.forward(request, response);
 		}
 	}
-
 }

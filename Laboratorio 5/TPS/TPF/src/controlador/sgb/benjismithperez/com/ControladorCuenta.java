@@ -2,9 +2,6 @@ package controlador.sgb.benjismithperez.com;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
 import modelo.sgb.benjismithperez.com.ModeloCuenta;
 
 public class ControladorCuenta {

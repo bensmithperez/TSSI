@@ -31,8 +31,9 @@ CREATE TABLE cuentas(
 
 DROP TABLE IF EXISTS `cuentasPorUsuario`;
 CREATE TABLE cuentasPorUsuario(
-	numCuenta 	VARCHAR(13)		NOT NULL PRIMARY KEY,
-    idUsuario 	INT(4)			NOT NULL PRIMARY KEY
+	dniUsuario 	INT(4)			NOT NULL PRIMARY KEY,
+    numCuenta 	VARCHAR(13)		NOT NULL,
+    activo		TINYINT(1) 		NOT NULL
 );
 
 DROP TABLE IF EXISTS ``;
@@ -57,4 +58,7 @@ delete from datosUsuarios where dni = "11111111";
 
 insert into usuarios(tipo,usuario,pass,activo) values (1,"aruma",SHA2("123",256),1);
 
-update usuarios set tipo = 0 where id = 1
+update usuarios set tipo = 0 where id = 1;
+
+select numCuenta, monto from cuentas where numCuenta = 1234567891212 and activo = 1;
+select count(*) as cant from cuentasPorUsuario where idUsuario = 94662555 and activo =1;
