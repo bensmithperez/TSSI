@@ -29,6 +29,12 @@ CREATE TABLE cuentas(
     activo		TINYINT(1) 		NOT NULL
 );
 
+DROP TABLE IF EXISTS `cuentasPorUsuario`;
+CREATE TABLE cuentasPorUsuario(
+	numCuenta 	VARCHAR(13)		NOT NULL PRIMARY KEY,
+    idUsuario 	INT(4)			NOT NULL PRIMARY KEY
+);
+
 DROP TABLE IF EXISTS ``;
 CREATE TABLE (
 );

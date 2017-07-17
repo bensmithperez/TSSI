@@ -1,5 +1,6 @@
 package controlador.sgb.benjismithperez.com;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,7 +38,9 @@ public class ControladorCuenta {
 		    String q1 = "update cuentas set "
 		    		+ "activo = 0 where numCuenta = " + cu.getNumCuenta() + " and activo = 1;";
 		    
-		    c.EjecutarUpdateSimple(q1);
+		    if (c.EjecutarUpdateSimple(q1) == 0){
+		    	return false;
+		    }
 			return true;
 			
 		} catch (SQLException e) {
@@ -48,9 +51,25 @@ public class ControladorCuenta {
 		}
 	}
 	
-//	public void CargarDatos(){
-//		
-//	}
+	public boolean CargarDatos(){
+		try{
+			String q1 = "select numCuenta, monto from cuentas where numCuenta = "
+					+ cu.getNumCuenta()	+ " and activo = 1;";
+		
+			ResultSet r = c.EjecutarQuery(q1);
+			if (!r.next()){
+		    	return false;
+		    }
+			r.first();
+			cu.setMonto(r.getFloat("monto"));
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda cargarDatos de cuenta");
+			e.printStackTrace();
+			return false;
+		}
+	}
 //	
 //	public boolean ModificarDatosCuenta(){
 //		

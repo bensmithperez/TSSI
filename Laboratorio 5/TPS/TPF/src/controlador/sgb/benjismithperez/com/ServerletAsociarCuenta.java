@@ -10,18 +10,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.sgb.benjismithperez.com.ModeloCuenta;
+import modelo.sgb.benjismithperez.com.ModeloUsuario;
 
 /**
- * Servlet implementation class ServerletBorrarCuenta
+ * Servlet implementation class ServerletAsociarCuenta
  */
-@WebServlet("/ServerletBorrarCuenta")
-public class ServerletBorrarCuenta extends HttpServlet {
+@WebServlet("/ServerletAsociarCuenta")
+public class ServerletAsociarCuenta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServerletBorrarCuenta() {
+    public ServerletAsociarCuenta() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,17 +39,26 @@ public class ServerletBorrarCuenta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ModeloCuenta cu = new ModeloCuenta();
-		cu.setNumCuenta(request.getParameter("numCuenta"));
-		
+		ModeloCuenta cu = new ModeloCuenta(request.getParameter("numCuenta"),0);
+		ModeloUsuario u = new ModeloUsuario();
+		u.setDni(request.getParameter("dni"));
 		ControladorCuenta c = new ControladorCuenta(cu);
-		if (c.Borrar()){
-			request.setAttribute("exitoBorrarCuenta", "true");
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/exito.jsp");
-			rd.forward(request, response);
+		ControladorUsuario cUs = new ControladorUsuario(u);
+		
+		if (c.CargarDatos()){
+			cUs.CargarDatos();
+			if (u.getTipo()!=-1){
+				request.setAttribute("exito", ".");
+				RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
+				rd.forward(request, response);
+			} else {
+				request.setAttribute("error", "El usuario no existe.");
+				RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
+				rd.forward(request, response);
+			}	
 		} else {
-			request.setAttribute("errorBorrarCuenta", "true");
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/cuentas/borrar.jsp");
+			request.setAttribute("error", "La cuenta no existe.");
+			RequestDispatcher rd = request.getRequestDispatcher("admin/asociarCuenta.jsp");
 			rd.forward(request, response);
 		}
 	}

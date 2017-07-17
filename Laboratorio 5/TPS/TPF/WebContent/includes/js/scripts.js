@@ -114,3 +114,39 @@ function validarBorrarCuenta(){
 	}
 
 }
+
+function validarBuscarCuentaModificar(){
+	if(hayCampoVacio("buscarCuentaModificarForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+	var numCuenta = document.forms["buscarCuentaModificarForm"]["numCuenta"].value;
+	if (numCuenta.length<13){
+		document.getElementById("error").innerHTML = "Numero de cuenta invalido.";
+		return false;
+	}
+}
+
+function validarBuscarCuentaModificar(){
+	if(hayCampoVacio("buscarCuentaModificarForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+	var numCuenta = document.forms["buscarCuentaModificarForm"]["numCuenta"].value;
+	if (numCuenta.length<13){
+		document.getElementById("error").innerHTML = "Numero de cuenta invalido.";
+		return false;
+	}
+}
+
+function validarAsociarCuenta(){
+	if(hayCampoVacio("asociarCuentaForm")){
+		document.getElementById("error").innerHTML = "Ingresar todos los datos.";
+		return false;
+	}
+	var numCuenta = document.forms["asociarCuentaForm"]["numCuenta"].value;
+	if (numCuenta.length<13){
+		document.getElementById("error").innerHTML = "Numero de cuenta invalido.";
+		return false;
+	}
+}

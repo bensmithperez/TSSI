@@ -11,14 +11,14 @@
 
 <p>Ingresar numero de cuenta a modificar:</p>
 <form name="buscarCuentaModificarForm" action="${pageContext.request.contextPath}/ServerletBuscarCuentaModificar" method="post" onsubmit="return validarBuscarCuentaModificar()">
-	<input type="text" name="dni" placeholder="12345678">
+	<input type="text" name="numCuenta" placeholder="12345678">
 	<input type="submit" name="ingresar" value="Ingresar">
 </form>
 <p id="error">
 <%
 try{
-	if (request.getAttribute("usuarioNoExiste") != null){
-		out.println("Usuario no existe.");
+	if (request.getAttribute("cuentaNoExiste") != null){
+		out.println("La cuenta no existe.");
 	}
 }
 catch(Exception e){

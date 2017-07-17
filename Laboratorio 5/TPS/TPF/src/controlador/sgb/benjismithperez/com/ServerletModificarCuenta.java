@@ -1,27 +1,23 @@
 package controlador.sgb.benjismithperez.com;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.sgb.benjismithperez.com.ModeloCuenta;
-
 /**
- * Servlet implementation class ServerletBorrarCuenta
+ * Servlet implementation class ServerletModificarCuenta
  */
-@WebServlet("/ServerletBorrarCuenta")
-public class ServerletBorrarCuenta extends HttpServlet {
+@WebServlet("/ServerletModificarCuenta")
+public class ServerletModificarCuenta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServerletBorrarCuenta() {
+    public ServerletModificarCuenta() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,19 +34,8 @@ public class ServerletBorrarCuenta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ModeloCuenta cu = new ModeloCuenta();
-		cu.setNumCuenta(request.getParameter("numCuenta"));
-		
-		ControladorCuenta c = new ControladorCuenta(cu);
-		if (c.Borrar()){
-			request.setAttribute("exitoBorrarCuenta", "true");
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/exito.jsp");
-			rd.forward(request, response);
-		} else {
-			request.setAttribute("errorBorrarCuenta", "true");
-			RequestDispatcher rd = request.getRequestDispatcher("/admin/cuentas/borrar.jsp");
-			rd.forward(request, response);
-		}
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

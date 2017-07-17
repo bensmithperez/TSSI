@@ -5,6 +5,7 @@ public class ModeloCuenta {
 	private float monto;
 	
 	public ModeloCuenta() {
+		
 	}
 	
 	public ModeloCuenta(String numCuenta, float monto) {

@@ -15,7 +15,7 @@
 <p id="error">
 <%
 try{
-	if (request.getAttribute("errorBorrarCliente") != null){
+	if (request.getAttribute("errorBorrarCuenta") != null){
 		out.println("Se produjo un error.");
 	}
 	if (request.getAttribute("cuentaCreada") != null){
