@@ -150,3 +150,17 @@ function validarAsociarCuenta(){
 		return false;
 	}
 }
+
+function validarServicioNuevo(){
+	if (hayCampoVacio("agregarServicioForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}
+
+function validarBorrarServicio(){
+	if (hayCampoVacio("borrarServicioForm")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+}
