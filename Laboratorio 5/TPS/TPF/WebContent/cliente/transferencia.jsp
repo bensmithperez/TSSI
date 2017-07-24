@@ -6,6 +6,13 @@
 <%@ include file="../includes/cliente/menu.jsp" %>
 <h1>Cliente</h1>
 <h2>Transferencias</h2>
+<form name="formRealizarTransferencia" action="ServerletRealizarTransferencia" method="post" onsubmit="return validarRealizarTransferencia()">
+	<select name="cuentasOrigen" placeholder="Cuenta de origen">
+	</select><br>
+	<input type="number" name="cuentaDestino" placeholder="Cuenta de destino"><br>
+	<input type="number" name="monto" placeholder="monto"><br>
+	<input type="submit" name="transferir" value="Transferir">
+</form>
 <%@ include file="../includes/cliente/footer.jsp" %>
 </body>
 </html>
