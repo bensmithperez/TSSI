@@ -89,6 +89,10 @@ select * from usuarios;
 select * from datosUsuarios;
 select * from cuentas;
 select * from cuentasPorUsuario;
+select * from transacciones;
+select * from tiposTransaccion;
+
+insert into tiposTransaccion(id,descripcion) values (0,"transferencia"),(1,"pagoServicio");
 
 -- seleccionar datos de un usuario --
 select id, usuario, nombre, apellido, fechaNac 
@@ -104,6 +108,10 @@ delete from datosUsuarios where dni = "11111111";
 insert into usuarios(tipo,usuario,pass,activo) values (1,"test",SHA2("123",256),1);
 
 update usuarios set tipo = 0 where id = 1;
+
+insert into transacciones (idTipo,fecha,numCuenta,estado) values (0,now(),1234567891212,1);
+
+select * from transacciones where numCuenta in (select numCuenta from cuentasPorUsuario where dniUsuario = 94662331);
 
 select numCuenta, monto from cuentas where numCuenta = 1234567891212 and activo = 1;
 select count(*) as cant from cuentasPorUsuario where dniUsuario = '94662555' and activo = 1;
