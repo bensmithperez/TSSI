@@ -7,7 +7,7 @@
 <h1>Cliente</h1>
 <h2>Transferencias</h2>
 <form name="formRealizarTransferencia" action="ServerletRealizarTransferencia" method="post" onsubmit="return validarRealizarTransferencia()">
-	<select name="cuentasOrigen" placeholder="Cuenta de origen">
+	Cuenta de origen: <select name="cuentasOrigen">
 	</select><br>
 	<input type="number" name="cuentaDestino" placeholder="Cuenta de destino"><br>
 	<input type="number" name="monto" placeholder="monto"><br>
