@@ -13,7 +13,6 @@
 <h2>Movimientos</h2>
 
 <%
-   //Obtiene los productos del controlador (Servlet)
 	List<ModeloTransaccion> listaTransacciones =  (List<ModeloTransaccion>) request.getAttribute("listaTransacciones");
 %>
 <table>

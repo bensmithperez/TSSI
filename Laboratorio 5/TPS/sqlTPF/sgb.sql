@@ -115,5 +115,7 @@ insert into transacciones (idTipo,fecha,numCuenta,estado) values (0,now(),123456
 select * from transacciones where numCuenta in (select numCuenta from cuentasPorUsuario where dniUsuario = 94662331);
 
 select numCuenta, monto from cuentas where numCuenta = 1234567891212 and activo = 1;
-select count(*) as cant from cuentasPorUsuario where dniUsuario = '94662555' and activo = 1;
-select numCuenta from cuentasPorUsuario where dniUsuario = '94662555' and activo = 1;
+select count(*) as cant from cuentasPorUsuario where dniUsuario = '' and activo = 1;
+select numCuenta from cuentasPorUsuario where dniUsuario = '' and activo = 1;
+
+select numCuenta from cuentasPorUsuario where dniUsuario = and activo = 1;
