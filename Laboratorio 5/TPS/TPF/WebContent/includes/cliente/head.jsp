@@ -3,5 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/includes/style/style.css">
+<script src="${pageContext.request.contextPath}/includes/js/scripts.js"></script>
 <title>SGB - Cliente</title>
 </head>

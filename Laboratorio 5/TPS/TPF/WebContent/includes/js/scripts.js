@@ -164,3 +164,32 @@ function validarBorrarServicio(){
 		return false;
 	}
 }
+
+function validarPagarServicio(){
+	if (hayCampoVacio("formPagarServicio")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+	var monto = document.forms["formPagarServicio"]["monto"].value;
+	if (monto<0){
+		document.getElementById("error").innerHTML = "Monto invalido.";
+		return false;
+	}
+}
+
+function validarRealizarTransferencia(){
+	if (hayCampoVacio("formRealizarTransferencia")){
+		document.getElementById("error").innerHTML = "Es necesario completar todos los campos.";
+		return false;
+	}
+	var monto = document.forms["formRealizarTransferencia"]["monto"].value;
+	var numCuenta = document.forms["formRealizarTransferencia"]["cuentaDestino"].value;
+	if (numCuenta.length<13){
+		document.getElementById("error").innerHTML = "Numero de cuenta invalido.";
+		return false;
+	}
+	if (monto<0){
+		document.getElementById("error").innerHTML = "Monto invalido.";
+		return false;
+	}
+}

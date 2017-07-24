@@ -13,6 +13,21 @@
 	<input type="number" name="monto" placeholder="monto"><br>
 	<input type="submit" name="transferir" value="Transferir">
 </form>
+<p id="error">
+<%
+try{
+	if (request.getAttribute("error") != null){
+		out.println("Se produjo un error.");
+	}
+	if (request.getAttribute("exitoTransferencia") != null){
+		out.println("Transferencia exitosa!");
+	}
+}
+catch(Exception e){
+	out.println("error");
+}
+%>
+</p>
 <%@ include file="../includes/cliente/footer.jsp" %>
 </body>
 </html>

@@ -65,7 +65,7 @@ CREATE TABLE transferencias(
 
 DROP TABLE IF EXISTS `servicios`;
 CREATE TABLE servicios(
-	id 			INT(4)			NOT NULL PRIMARY KEY,
+	id 			INT(4)			NOT NULL PRIMARY KEY AUTO_INCREMENT,
     descripcion	VARCHAR(20)		NOT NULL,
     activo		TINYINT(1) 		NOT NULL
 );
@@ -91,6 +91,7 @@ select * from cuentas;
 select * from cuentasPorUsuario;
 select * from transacciones;
 select * from tiposTransaccion;
+select * from servicios;
 
 insert into tiposTransaccion(id,descripcion) values (0,"transferencia"),(1,"pagoServicio");
 
