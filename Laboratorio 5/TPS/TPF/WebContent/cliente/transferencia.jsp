@@ -29,6 +29,9 @@ try{
 	if (request.getAttribute("error") != null){
 		out.println("Se produjo un error.");
 	}
+	if (request.getAttribute("errorSaldo") != null){
+		out.println("Saldo Insuficiente.");
+	}
 	if (request.getAttribute("exitoTransferencia") != null){
 		out.println("Transferencia exitosa!");
 	}

@@ -3,6 +3,7 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="controlador.sgb.benjismithperez.com.ControladorCuenta"%>
 <%@page import="modelo.sgb.benjismithperez.com.ModeloCuenta"%>
+<%@page import="modelo.sgb.benjismithperez.com.ModeloServicio"%>
 <%@ page import="java.util.*" %>
 <%@ include file="../includes/cliente/head.jsp" %>
 <body>
@@ -11,7 +12,8 @@
 <h1>Cliente</h1>
 <h2>Pagar Servicios</h2>
 <%
-	List<ModeloCuenta> listaCuentas =  (List<ModeloCuenta>) request.getAttribute("listaCuentas");
+	List<ModeloCuenta> listaCuentas =  (List<ModeloCuenta>) request.getAttribute("listaCuentas");	
+	List<ModeloServicio> listaServicios =  (List<ModeloServicio>) request.getAttribute("listaServicios");
 %>
 <form name="formPagarServicio" action="ServerletPagarServicio" method="post" onsubmit="return validarPagarServicio()">
 	Cuenta de origen: <select name="cuentasOrigen">
@@ -20,6 +22,9 @@
 		<%} %>
 	</select><br>
 	Servicio :<select name="servicio">
+	<% for(ModeloServicio ms : listaServicios) { %>
+		<option value="<%= ms.getId() %>"><%= ms.getDescripcion()%></option>
+		<%} %>
 	</select><br>
 	<input type="number" name="monto" placeholder="monto"><br>
 	<input type="submit" name="pagar" value="Pagar">

@@ -67,12 +67,45 @@ public class ControladorCuenta {
 			return false;
 		}
 	}
-//	
-//	public boolean ModificarDatosCuenta(){
-//		
-//	}
-//	
-//	public boolean BorrarUsuario(){
-//		
-//	}
+	public boolean ValidarSaldo(float monto){
+		if (cu.getMonto()>monto){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean RestarSaldo(float monto){
+		try{
+			String q1 = "update cuentas set monto = (monto - " + monto + ") where numCuenta = "
+					+ cu.getNumCuenta()	+ " and activo = 1;";
+		
+			
+			if (c.EjecutarUpdateSimple(q1) == 0){
+		    	return false;
+		    }
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda restar saldo");
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean SumarSaldo(float monto){
+		try{
+			String q1 = "update cuentas set monto = (monto + " + monto + ") where numCuenta = "
+					+ cu.getNumCuenta()	+ " and activo = 1;";
+		
+			if (c.EjecutarUpdateSimple(q1) == 0){
+		    	return false;
+		    }
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda restar saldo");
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

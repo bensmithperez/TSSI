@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modelo.sgb.benjismithperez.com.ModeloCuenta;
+import modelo.sgb.benjismithperez.com.ModeloServicio;
 import modelo.sgb.benjismithperez.com.ModeloUsuario;
 import modelo.sgb.benjismithperez.com.ModeloUxC;
 
@@ -42,9 +43,16 @@ public class ServerletServicios extends HttpServlet {
 			cu.BuscarDni();
 			ModeloUxC muxc = new ModeloUxC();
 			ControladorUxC c = new ControladorUxC(muxc);
-
+			//cargar cuentas de usuario
 			List<ModeloCuenta> listaCuentas = c.cargarCuentasUsuario(u.getDni());
 			request.setAttribute("listaCuentas", listaCuentas);
+			
+			//cargar servicios
+			ModeloServicio mserv = new ModeloServicio();
+			ControladorServicio cserv = new ControladorServicio(mserv);
+			
+			List<ModeloServicio> listaServicios = cserv.cargarServicios();
+			request.setAttribute("listaServicios", listaServicios);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("cliente/pagarServicio.jsp");
 			dispatcher.forward(request, response);
 		}

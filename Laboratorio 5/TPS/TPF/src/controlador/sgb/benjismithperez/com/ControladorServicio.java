@@ -1,6 +1,9 @@
 package controlador.sgb.benjismithperez.com;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import modelo.sgb.benjismithperez.com.ModeloServicio;
 
@@ -46,6 +49,25 @@ public class ControladorServicio {
 			e.printStackTrace();
 			return false;
 		}
-
+	}
+	
+	public List<ModeloServicio> cargarServicios(){
+		try{
+			ModeloServicio m;
+			List<ModeloServicio> listaServicios = new ArrayList<ModeloServicio>();
+			ResultSet r = c.EjecutarQuery("select id,descripcion from servicios where activo = 1;");
+			
+			r.beforeFirst();
+			while (r.next()){
+				m = new ModeloServicio(r.getInt("id"),r.getString("descripcion"));
+				listaServicios.add(m);
+			}
+			return listaServicios;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda cargarServicios");
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

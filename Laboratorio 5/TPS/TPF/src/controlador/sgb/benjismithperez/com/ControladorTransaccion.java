@@ -9,7 +9,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
+import modelo.sgb.benjismithperez.com.ModeloPagoServicio;
 import modelo.sgb.benjismithperez.com.ModeloTransaccion;
+import modelo.sgb.benjismithperez.com.ModeloTransferencia;
 
 public class ControladorTransaccion {
 	private ModeloTransaccion m;
@@ -20,17 +22,44 @@ public class ControladorTransaccion {
 		this.c = new ControladorConexion();
 	}
 	
-	public boolean GenerarTransaccion(){
+	public boolean GenerarTransaccion(ModeloTransferencia mt){
 		try {	    
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-		    String q1 = "insert into transacciones(id,idTipo,fecha,numCuenta,estado) values("
-					+ m.getId()+",'"
+		    String q1 = "insert into transacciones(idTipo,fecha,numCuenta,estado) values("
+					+ m.getIdTipo()+",'"
+					+ format.format(m.getFecha())+" 00:00:00','"
+					+ m.getNumCuenta()+"',"
+					+ m.getEstado()+");";
+		    System.err.println(q1);
+		
+		    String q2 = "insert into transferencias(idTransaccion, cuentaDestino, monto) values('?','" 
+		    		+ mt.getCuentaDestino() + "',"
+		    		+ mt.getMonto() + ");";
+		    
+		    c.EjecutarUpdateCompuesto(q1,q2);
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.err.println("no anda agregar");
+			e.printStackTrace();
+			return false;
+		}
+	}
+	
+	public boolean GenerarTransaccion(ModeloPagoServicio mp){
+		try {	    
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		    String q1 = "insert into transacciones(idTipo,fecha,numCuenta,estado) values("
 					+ m.getIdTipo()+"','"
 					+ format.format(m.getFecha())+" 00:00:00','"
 					+ m.getNumCuenta()+"','"
 					+ m.getEstado()+"';";
 		
-			c.EjecutarUpdateSimple(q1);
+		    String q2 = "insert into pagoServicios(idTransaccion, idServicio, monto) values(?,'" 
+		    		+ mp.getIdServicio() + "',"
+		    		+ mp.getMonto() + ");";
+		    
+		    c.EjecutarUpdateCompuesto(q1,q2);
 			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
