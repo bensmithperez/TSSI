@@ -93,6 +93,7 @@ select * from transacciones;
 select * from tiposTransaccion;
 select * from servicios;
 select * from transferencias;
+select * from pagoServicios;
 
 insert into tiposTransaccion(id,descripcion) values (0,"transferencia"),(1,"pagoServicio");
 
