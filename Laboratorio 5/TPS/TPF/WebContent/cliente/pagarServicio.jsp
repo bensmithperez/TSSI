@@ -35,7 +35,10 @@ try{
 	if (request.getAttribute("error") != null){
 		out.println("Se produjo un error.");
 	}
-	if (request.getAttribute("servicioPago") != null){
+	if (request.getAttribute("errorSaldo") != null){
+		out.println("Saldo Insuficiente.");
+	}
+	if (request.getAttribute("exitoPago") != null){
 		out.println("Servicio pagado!");
 	}
 }

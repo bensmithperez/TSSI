@@ -50,13 +50,13 @@ public class ControladorTransaccion {
 		try {	    
 			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		    String q1 = "insert into transacciones(idTipo,fecha,numCuenta,estado) values("
-					+ m.getIdTipo()+"','"
+					+ m.getIdTipo()+",'"
 					+ format.format(m.getFecha())+" 00:00:00','"
-					+ m.getNumCuenta()+"','"
-					+ m.getEstado()+"';";
+					+ m.getNumCuenta()+"',"
+					+ m.getEstado()+");";
 		
-		    String q2 = "insert into pagoServicios(idTransaccion, idServicio, monto) values(?,'" 
-		    		+ mp.getIdServicio() + "',"
+		    String q2 = "insert into pagoServicios(idTransaccion, idServicio, monto) values(?," 
+		    		+ mp.getIdServicio() + ","
 		    		+ mp.getMonto() + ");";
 		    
 		    c.EjecutarUpdateCompuesto(q1,q2);
